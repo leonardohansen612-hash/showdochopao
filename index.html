@@ -1,99 +1,80 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Show do Chopão • Tex Pub</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Show do Chopão</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="stage">
-    <div class="spotlight s1"></div>
-    <div class="spotlight s2"></div>
-    <div class="spotlight s3"></div>
-
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-badge">TEX</div>
-        <div>
-          <small>AO VIVO NO PUB</small>
-          <strong>SHOW DO CHOPÃO</strong>
+  <main class="game-shell">
+    <section class="game-board">
+      <header class="logo-wrap">
+        <div class="logo-badge">
+          <span class="logo-small">SHOW DO</span>
+          <span class="logo-main">CHOPÃO</span>
+          <span class="logo-beer">🍺</span>
         </div>
-      </div>
+      </header>
 
-      <div class="status">
-        <span class="live-dot"></span>
-        <span id="statusText">VALENDO R$ 10</span>
-      </div>
-    </header>
-
-    <main class="game-layout">
-      <section class="game-card">
-        <div class="question-head">
-          <span class="question-number">PERGUNTA <b id="questionNumber">1</b> DE 15</span>
-          <div class="timer-wrap">
-            <span>⏱</span>
-            <strong id="timer">30</strong>
-          </div>
-        </div>
-
-        <div class="prize-title">
-          VALENDO <span id="currentPrize">R$ 10</span>
-        </div>
-
-        <div class="question-box" id="questionBox">
-          Qual destas cidades é conhecida como a “Terra da Uva” no estado de São Paulo?
-        </div>
-
-        <div class="answers" id="answers">
-          <button class="answer" data-letter="A"><span>A</span><b>Jundiaí</b></button>
-          <button class="answer" data-letter="B"><span>B</span><b>Santos</b></button>
-          <button class="answer" data-letter="C"><span>C</span><b>Campinas</b></button>
-          <button class="answer" data-letter="D"><span>D</span><b>Sorocaba</b></button>
-        </div>
-
-        <div class="helpers">
-          <button id="fiftyBtn">50/50</button>
-          <button id="pubBtn">🍺 PERGUNTE AO PUB</button>
-          <button id="swapBtn">🔁 TROCAR</button>
-        </div>
-
-        <div class="host-controls">
-          <button class="secondary" id="prevBtn">← ANTERIOR</button>
-          <button class="danger" id="wrongBtn">✕ ERROU</button>
-          <button class="success" id="correctBtn">✓ ACERTOU</button>
-          <button class="primary" id="nextBtn">PRÓXIMA →</button>
+      <section class="question-panel">
+        <div class="question-value">PERGUNTA <span id="questionNumber">1</span> • VALENDO <b id="currentPrize">R$ 10</b></div>
+        <div class="question-text" id="questionText">
+          A pequena haste com algodão nas pontas para fins higiênicos chama-se?
         </div>
       </section>
 
-      <aside class="ladder">
-        <div class="ladder-title">
-          <span>🏆</span>
-          ESCADA DO CHOPÃO
-        </div>
-        <div id="prizeLadder" class="ladder-list"></div>
-      </aside>
-    </main>
+      <section class="answers" id="answers">
+        <button class="answer" data-index="0"><span class="num">1</span><span class="txt">GUARDANAPO</span></button>
+        <button class="answer" data-index="1"><span class="num">2</span><span class="txt">TOALHA</span></button>
+        <button class="answer" data-index="2"><span class="num">3</span><span class="txt">ALFINETE</span></button>
+        <button class="answer" data-index="3"><span class="num">4</span><span class="txt">COTONETE</span></button>
+      </section>
 
-    <footer>
-      <span>SHOW DO CHOPÃO • TEX PUB</span>
-      <span>Prévia interativa</span>
-    </footer>
-  </div>
+      <section class="bottom-actions">
+        <button class="money-card danger" id="wrongBtn">
+          <strong id="wrongValue">R$ 0</strong>
+          <span>ERRAR</span>
+        </button>
+        <button class="money-card neutral" id="stopBtn">
+          <strong id="stopValue">R$ 10</strong>
+          <span>PARAR</span>
+        </button>
+        <button class="money-card success" id="correctBtn">
+          <strong id="nextValue">R$ 20</strong>
+          <span>ACERTAR</span>
+        </button>
+      </section>
+
+      <section class="helpers">
+        <button id="fiftyBtn">50/50</button>
+        <button id="pubBtn">PERGUNTE AO PUB</button>
+        <button id="swapBtn">TROCAR</button>
+      </section>
+
+      <section class="admin-row">
+        <button id="prevBtn">← ANTERIOR</button>
+        <button id="nextBtn">PRÓXIMA →</button>
+      </section>
+    </section>
+
+    <aside class="prize-ladder">
+      <div class="ladder-title">ESCADA DO CHOPÃO</div>
+      <div id="ladder"></div>
+    </aside>
+  </main>
 
   <div class="overlay hidden" id="overlay">
-    <div class="overlay-card" id="overlayCard">
-      <div class="overlay-emoji" id="overlayEmoji">🍺</div>
+    <div class="overlay-card">
+      <div class="overlay-icon" id="overlayIcon">🍺</div>
       <div class="overlay-title" id="overlayTitle">ACERTOU!</div>
-      <div class="overlay-sub" id="overlaySub">Você continua no Show do Chopão!</div>
-      <button id="closeOverlay">CONTINUAR</button>
+      <div class="overlay-sub" id="overlaySub"></div>
+      <button id="continueBtn">CONTINUAR</button>
     </div>
   </div>
-
-  <div class="confetti" id="confetti"></div>
 
   <script src="script.js"></script>
 </body>
