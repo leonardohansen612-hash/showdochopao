@@ -21,61 +21,80 @@ const questions = [
 
 let current = 0;
 let selected = null;
+let remaining = 30;
+let timerId = null;
 
 const qNumber = document.getElementById('questionNumber');
 const currentPrize = document.getElementById('currentPrize');
 const questionText = document.getElementById('questionText');
 const answers = [...document.querySelectorAll('.answer')];
 const ladder = document.getElementById('ladder');
+const timerEl = document.getElementById('timer');
 
-function brl(v){return `R$ ${v.toLocaleString('pt-BR')}`}
+function brl(v){
+  return `R$ ${v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+}
 
 function renderLadder(){
   ladder.innerHTML='';
   prizes.forEach((p,i)=>{
     const el=document.createElement('div');
-    el.className='ladder-item'+(i===current?' current':'')+([9,13,14].includes(i)?' big':'');
-    el.innerHTML=`<span>${String(i+1).padStart(2,'0')}</span><span>${brl(p)}</span>`;
+    let cls='ladder-item';
+    if([4,9].includes(i)) cls+=' milestone';
+    if(i===14) cls+=' jackpot';
+    if(i===current) cls+=' current';
+    el.className=cls;
+    el.innerHTML=`<span>${i+1}</span><span>${brl(p)}</span>`;
     ladder.appendChild(el);
   });
+}
+
+function resetTimer(){
+  clearInterval(timerId);
+  remaining=30;
+  timerEl.textContent=remaining;
+  timerId=setInterval(()=>{
+    remaining--;
+    timerEl.textContent=Math.max(remaining,0);
+    if(remaining<=0) clearInterval(timerId);
+  },1000);
 }
 
 function render(){
   selected=null;
   const data=questions[current];
-  qNumber.textContent=current+1;
+  qNumber.textContent=String(current+1).padStart(2,'0');
   currentPrize.textContent=brl(prizes[current]);
   questionText.textContent=data.q;
   answers.forEach((btn,i)=>{
     btn.className='answer';
     btn.querySelector('.txt').textContent=data.a[i];
   });
-
-  const stop = prizes[current];
-  const next = current < prizes.length-1 ? prizes[current+1] : prizes[current];
-  document.getElementById('stopValue').textContent=brl(stop);
-  document.getElementById('nextValue').textContent=brl(next);
-  document.getElementById('wrongValue').textContent=current===0?'R$ 0':brl(prizes[Math.max(0,current-1)]);
   renderLadder();
+  resetTimer();
 }
 
 answers.forEach((btn,i)=>{
   btn.addEventListener('click',()=>{
-    if(btn.classList.contains('disabled'))return;
+    if(btn.classList.contains('disabled')) return;
     answers.forEach(a=>a.classList.remove('selected'));
     btn.classList.add('selected');
     selected=i;
   });
 });
 
-function overlay(kind){
+function showOverlay(kind){
+  clearInterval(timerId);
   const box=document.getElementById('overlay');
   const title=document.getElementById('overlayTitle');
   const sub=document.getElementById('overlaySub');
   const icon=document.getElementById('overlayIcon');
+
   if(kind==='correct'){
     title.textContent=current===14?'GANHOU O CHOPÃO!':'ACERTOU!';
-    sub.textContent=current===14?'R$ 500 conquistados! 🍺🏆':`Você segue no jogo. Próxima: ${brl(prizes[current+1])}.`;
+    sub.textContent=current===14
+      ? 'R$ 500,00 conquistados! 🍺🏆'
+      : `Você segue no jogo. A próxima vale ${brl(prizes[current+1])}.`;
     icon.textContent=current===14?'🏆🍺':'🍺';
   }else if(kind==='wrong'){
     title.textContent='ERROU!';
@@ -92,26 +111,36 @@ function overlay(kind){
 document.getElementById('correctBtn').onclick=()=>{
   const correct=questions[current].correct;
   answers[correct].classList.add('correct');
-  overlay('correct');
+  showOverlay('correct');
 };
 document.getElementById('wrongBtn').onclick=()=>{
   if(selected!==null) answers[selected].classList.add('wrong');
   answers[questions[current].correct].classList.add('correct');
-  overlay('wrong');
+  showOverlay('wrong');
 };
-document.getElementById('stopBtn').onclick=()=>overlay('stop');
+document.getElementById('stopBtn').onclick=()=>showOverlay('stop');
+document.getElementById('continueBtn').onclick=()=>{
+  document.getElementById('overlay').classList.add('hidden');
+  resetTimer();
+};
 
-document.getElementById('continueBtn').onclick=()=>document.getElementById('overlay').classList.add('hidden');
-
-document.getElementById('nextBtn').onclick=()=>{if(current<14){current++;render()}};
-document.getElementById('prevBtn').onclick=()=>{if(current>0){current--;render()}};
+document.getElementById('nextBtn').onclick=()=>{
+  if(current<14){ current++; render(); }
+};
+document.getElementById('prevBtn').onclick=()=>{
+  if(current>0){ current--; render(); }
+};
 
 document.getElementById('fiftyBtn').onclick=()=>{
   const correct=questions[current].correct;
   const wrong=[0,1,2,3].filter(i=>i!==correct).sort(()=>Math.random()-.5).slice(0,2);
   wrong.forEach(i=>answers[i].classList.add('disabled'));
 };
-document.getElementById('pubBtn').onclick=()=>alert('Na próxima versão podemos abrir votação da plateia.');
-document.getElementById('swapBtn').onclick=()=>alert('Na próxima versão podemos trocar por outra pergunta do mesmo nível.');
+document.getElementById('pubBtn').onclick=()=>{
+  alert('Prévia: na próxima versão podemos abrir uma votação da plateia e mostrar os percentuais na tela.');
+};
+document.getElementById('swapBtn').onclick=()=>{
+  alert('Prévia: na próxima versão este botão trocará por outra pergunta do mesmo nível.');
+};
 
 render();

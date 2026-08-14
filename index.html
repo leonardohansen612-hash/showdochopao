@@ -3,27 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Show do Chopão</title>
+  <title>Show do Chopão • Tex Pub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="game-shell">
-    <section class="game-board">
-      <header class="logo-wrap">
-        <div class="logo-badge">
-          <span class="logo-small">SHOW DO</span>
-          <span class="logo-main">CHOPÃO</span>
-          <span class="logo-beer">🍺</span>
-        </div>
-      </header>
+  <main class="stage">
+    <div class="lights"></div>
 
-      <section class="question-panel">
-        <div class="question-value">PERGUNTA <span id="questionNumber">1</span> • VALENDO <b id="currentPrize">R$ 10</b></div>
+    <section class="left-zone">
+      <div class="hero-row">
+        <div class="info-stack">
+          <div class="info-card question-count">
+            <span>PERGUNTA</span>
+            <strong id="questionNumber">01</strong>
+            <small>DE 15</small>
+          </div>
+
+          <div class="info-card timer-card">
+            <span>TEMPO</span>
+            <div class="timer-ring">
+              <strong id="timer">30</strong>
+              <small>SEG</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="logo-stage">
+          <img src="assets/show-do-chopao-logo.png" alt="Show do Chopão" class="main-logo">
+        </div>
+      </div>
+
+      <section class="question-box">
+        <div class="question-value">VALENDO <b id="currentPrize">R$ 10,00</b></div>
         <div class="question-text" id="questionText">
-          A pequena haste com algodão nas pontas para fins higiênicos chama-se?
+          A PEQUENA HASTE COM ALGODÃO NAS PONTAS PARA FINS HIGIÊNICOS CHAMA-SE?
         </div>
       </section>
 
@@ -34,36 +50,35 @@
         <button class="answer" data-index="3"><span class="num">4</span><span class="txt">COTONETE</span></button>
       </section>
 
-      <section class="bottom-actions">
-        <button class="money-card danger" id="wrongBtn">
-          <strong id="wrongValue">R$ 0</strong>
-          <span>ERRAR</span>
-        </button>
-        <button class="money-card neutral" id="stopBtn">
-          <strong id="stopValue">R$ 10</strong>
-          <span>PARAR</span>
-        </button>
-        <button class="money-card success" id="correctBtn">
-          <strong id="nextValue">R$ 20</strong>
-          <span>ACERTAR</span>
-        </button>
+      <section class="bottom-bar">
+        <div class="helpers">
+          <button id="fiftyBtn"><b>👥</b><span>50/50</span></button>
+          <button id="swapBtn"><b>↻</b><span>TROCA<br>PERGUNTA</span></button>
+          <button id="pubBtn"><b>▥</b><span>PÚBLICO</span></button>
+        </div>
+
+        <div class="game-actions">
+          <button class="action wrong" id="wrongBtn"><b>✕</b><span>ERRAR</span></button>
+          <button class="action stop" id="stopBtn"><b>Ⅱ</b><span>PARAR</span></button>
+          <button class="action correct" id="correctBtn"><b>✓</b><span>ACERTAR</span></button>
+        </div>
       </section>
 
-      <section class="helpers">
-        <button id="fiftyBtn">50/50</button>
-        <button id="pubBtn">PERGUNTE AO PUB</button>
-        <button id="swapBtn">TROCAR</button>
-      </section>
-
-      <section class="admin-row">
+      <div class="host-nav">
         <button id="prevBtn">← ANTERIOR</button>
         <button id="nextBtn">PRÓXIMA →</button>
-      </section>
+      </div>
     </section>
 
-    <aside class="prize-ladder">
-      <div class="ladder-title">ESCADA DO CHOPÃO</div>
-      <div id="ladder"></div>
+    <aside class="right-zone">
+      <section class="ladder-panel">
+        <div class="ladder-title">ESCADA DO CHOPÃO</div>
+        <div id="ladder" class="ladder-list"></div>
+      </section>
+
+      <div class="badger-wrap">
+        <img src="assets/texugo-apresentador.png" alt="Texugo apresentador" class="badger">
+      </div>
     </aside>
   </main>
 
