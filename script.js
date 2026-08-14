@@ -1,28 +1,22 @@
 
 const prizes = [10,20,30,40,50,60,70,80,90,100,150,200,250,300,500];
 
-const questions = [
-  {q:'A pequena haste com algodão nas pontas para fins higiênicos chama-se?', a:['Guardanapo','Toalha','Alfinete','Cotonete'], correct:3},
-  {q:'Qual destas bebidas é feita tradicionalmente com tequila, limão e licor de laranja?', a:['Margarita','Negroni','Mojito','Cosmopolitan'], correct:0},
-  {q:'Qual planeta é conhecido como Planeta Vermelho?', a:['Vênus','Marte','Júpiter','Mercúrio'], correct:1},
-  {q:'Qual é a capital da Argentina?', a:['Córdoba','Rosário','Buenos Aires','Mendoza'], correct:2},
-  {q:'Quem pintou a Mona Lisa?', a:['Van Gogh','Da Vinci','Picasso','Monet'], correct:1},
-  {q:'Quantos lados tem um hexágono?', a:['5','6','7','8'], correct:1},
-  {q:'Qual destes países fica na Europa?', a:['Peru','Portugal','México','Japão'], correct:1},
-  {q:'Qual banda gravou “Bohemian Rhapsody”?', a:['Queen','Nirvana','U2','Oasis'], correct:0},
-  {q:'Qual é o maior oceano da Terra?', a:['Atlântico','Índico','Pacífico','Ártico'], correct:2},
-  {q:'Qual elemento químico tem símbolo Fe?', a:['Ferro','Flúor','Fósforo','Frâncio'], correct:0},
-  {q:'Quem escreveu Dom Casmurro?', a:['José de Alencar','Machado de Assis','Lima Barreto','Clarice Lispector'], correct:1},
-  {q:'Qual país sediou a Copa do Mundo de 2014?', a:['África do Sul','Brasil','Rússia','Alemanha'], correct:1},
-  {q:'Qual é a raiz quadrada de 144?', a:['10','11','12','14'], correct:2},
-  {q:'Qual destes cientistas formulou as leis do movimento?', a:['Newton','Darwin','Pasteur','Bohr'], correct:0},
-  {q:'Valendo o Chopão: qual alternativa foi marcada como correta nesta prévia?', a:['A','B','C','D'], correct:3},
-];
-
 let current = 0;
 let selected = null;
 let remaining = 30;
 let timerId = null;
+let currentQuestion = null;
+let questionHistory = [];
+let playerNo = Number(localStorage.getItem('chopao_player_no') || 1);
+let sessionId = localStorage.getItem('chopao_session_id') || null;
+let localBank = [];
+let localUsed = new Set(JSON.parse(localStorage.getItem('chopao_used_ids') || '[]'));
+
+const cfg = window.SHOW_DO_CHOPAO_CONFIG || {};
+const hasSupabaseConfig = Boolean(cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY);
+const supabaseClient = hasSupabaseConfig
+  ? window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY)
+  : null;
 
 const qNumber = document.getElementById('questionNumber');
 const currentPrize = document.getElementById('currentPrize');
@@ -30,9 +24,19 @@ const questionText = document.getElementById('questionText');
 const answers = [...document.querySelectorAll('.answer')];
 const ladder = document.getElementById('ladder');
 const timerEl = document.getElementById('timer');
+const dbStatus = document.getElementById('dbStatus');
 
 function brl(v){
   return `R$ ${v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+}
+
+function shuffle(arr){
+  const copy=[...arr];
+  for(let i=copy.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [copy[i],copy[j]]=[copy[j],copy[i]];
+  }
+  return copy;
 }
 
 function renderLadder(){
@@ -60,23 +64,121 @@ function resetTimer(){
   },1000);
 }
 
-function render(){
-  selected=null;
-  const data=questions[current];
-  qNumber.textContent=String(current+1).padStart(2,'0');
-  currentPrize.textContent=brl(prizes[current]);
-  questionText.textContent=data.q;
-  answers.forEach((btn,i)=>{
-    btn.className='answer';
-    btn.querySelector('.txt').textContent=data.a[i];
-  });
-  renderLadder();
-  resetTimer();
+function setStatus(text, ok=false){
+  dbStatus.textContent=text;
+  dbStatus.style.color = ok ? '#8dffb6' : '#ffe45b';
+}
+
+async function ensureLocalBank(){
+  if(localBank.length) return;
+  const res = await fetch('questions.json');
+  localBank = await res.json();
+}
+
+async function ensureSession(){
+  if(sessionId) return sessionId;
+
+  if(supabaseClient){
+    const {data,error} = await supabaseClient
+      .from('game_sessions')
+      .insert({name:`Show do Chopão - ${new Date().toLocaleString('pt-BR')}`})
+      .select('id')
+      .single();
+    if(error) throw error;
+    sessionId=data.id;
+    localStorage.setItem('chopao_session_id',sessionId);
+    setStatus('SUPABASE • SESSÃO ATIVA',true);
+    return sessionId;
+  }
+
+  sessionId='local-'+Date.now();
+  localStorage.setItem('chopao_session_id',sessionId);
+  localUsed = new Set();
+  localStorage.setItem('chopao_used_ids','[]');
+  setStatus('BANCO LOCAL • SESSÃO ATIVA');
+  return sessionId;
+}
+
+async function getUnusedQuestion(level){
+  await ensureSession();
+
+  if(supabaseClient){
+    const {data:questions,error:qErr}=await supabaseClient
+      .from('questions')
+      .select('id,difficulty,category,prompt,answers,correct_answer')
+      .eq('difficulty',level)
+      .eq('active',true);
+    if(qErr) throw qErr;
+
+    const {data:used,error:uErr}=await supabaseClient
+      .from('used_questions')
+      .select('question_id')
+      .eq('session_id',sessionId);
+    if(uErr) throw uErr;
+
+    const usedIds=new Set((used||[]).map(x=>Number(x.question_id)));
+    const available=(questions||[]).filter(q=>!usedIds.has(Number(q.id)));
+    if(!available.length) throw new Error(`Sem perguntas inéditas disponíveis no nível ${level}. Inicie uma nova sessão ou adicione perguntas.`);
+    const picked=available[Math.floor(Math.random()*available.length)];
+
+    const {error:markErr}=await supabaseClient
+      .from('used_questions')
+      .insert({session_id:sessionId,question_id:picked.id,player_no:playerNo});
+    if(markErr) throw markErr;
+
+    return picked;
+  }
+
+  await ensureLocalBank();
+  const available=localBank.filter(q=>q.difficulty===level && q.active && !localUsed.has(Number(q.id)));
+  if(!available.length) throw new Error(`Sem perguntas inéditas disponíveis no nível ${level}. Clique em NOVA SESSÃO.`);
+  const picked=available[Math.floor(Math.random()*available.length)];
+  localUsed.add(Number(picked.id));
+  localStorage.setItem('chopao_used_ids',JSON.stringify([...localUsed]));
+  return picked;
+}
+
+function normalizeQuestion(q){
+  const shuffled=shuffle(q.answers.map(text=>({text,correct:text===q.correct_answer})));
+  return {
+    id:q.id,
+    difficulty:q.difficulty,
+    category:q.category,
+    prompt:q.prompt,
+    answers:shuffled.map(x=>x.text),
+    correctIndex:shuffled.findIndex(x=>x.correct)
+  };
+}
+
+async function loadQuestion(level=current+1, pushHistory=true){
+  try{
+    answers.forEach(a=>{a.disabled=true; a.className='answer';});
+    questionText.textContent='SORTEANDO PERGUNTA...';
+    const q=normalizeQuestion(await getUnusedQuestion(level));
+    currentQuestion=q;
+    if(pushHistory) questionHistory.push({level:current,question:q});
+    selected=null;
+
+    qNumber.textContent=String(current+1).padStart(2,'0');
+    currentPrize.textContent=brl(prizes[current]);
+    questionText.textContent=q.prompt;
+    answers.forEach((btn,i)=>{
+      btn.disabled=false;
+      btn.className='answer';
+      btn.querySelector('.txt').textContent=q.answers[i];
+    });
+    renderLadder();
+    resetTimer();
+  }catch(err){
+    console.error(err);
+    questionText.textContent='ERRO AO CARREGAR PERGUNTA';
+    alert(err.message || 'Não foi possível carregar a pergunta.');
+  }
 }
 
 answers.forEach((btn,i)=>{
   btn.addEventListener('click',()=>{
-    if(btn.classList.contains('disabled')) return;
+    if(btn.disabled || btn.classList.contains('disabled')) return;
     answers.forEach(a=>a.classList.remove('selected'));
     btn.classList.add('selected');
     selected=i;
@@ -98,7 +200,7 @@ function showOverlay(kind){
     icon.textContent=current===14?'🏆🍺':'🍺';
   }else if(kind==='wrong'){
     title.textContent='ERROU!';
-    sub.textContent='Fim de jogo nesta rodada.';
+    sub.textContent='Fim de jogo. Clique em NOVO PARTICIPANTE para começar outra rodada.';
     icon.textContent='❌';
   }else{
     title.textContent='PAROU!';
@@ -109,38 +211,114 @@ function showOverlay(kind){
 }
 
 document.getElementById('correctBtn').onclick=()=>{
-  const correct=questions[current].correct;
-  answers[correct].classList.add('correct');
+  if(!currentQuestion) return;
+  answers[currentQuestion.correctIndex].classList.add('correct');
   showOverlay('correct');
 };
+
 document.getElementById('wrongBtn').onclick=()=>{
+  if(!currentQuestion) return;
   if(selected!==null) answers[selected].classList.add('wrong');
-  answers[questions[current].correct].classList.add('correct');
+  answers[currentQuestion.correctIndex].classList.add('correct');
   showOverlay('wrong');
 };
+
 document.getElementById('stopBtn').onclick=()=>showOverlay('stop');
-document.getElementById('continueBtn').onclick=()=>{
+
+document.getElementById('continueBtn').onclick=async()=>{
   document.getElementById('overlay').classList.add('hidden');
+  if(current<14){
+    current++;
+    await loadQuestion(current+1);
+  }else{
+    resetTimer();
+  }
+};
+
+document.getElementById('nextBtn').onclick=async()=>{
+  if(current<14){
+    current++;
+    await loadQuestion(current+1);
+  }
+};
+
+document.getElementById('prevBtn').onclick=()=>{
+  if(questionHistory.length<2) return;
+  questionHistory.pop();
+  const prev=questionHistory[questionHistory.length-1];
+  current=prev.level;
+  currentQuestion=prev.question;
+  selected=null;
+  qNumber.textContent=String(current+1).padStart(2,'0');
+  currentPrize.textContent=brl(prizes[current]);
+  questionText.textContent=currentQuestion.prompt;
+  answers.forEach((btn,i)=>{
+    btn.disabled=false;
+    btn.className='answer';
+    btn.querySelector('.txt').textContent=currentQuestion.answers[i];
+  });
+  renderLadder();
   resetTimer();
 };
 
-document.getElementById('nextBtn').onclick=()=>{
-  if(current<14){ current++; render(); }
-};
-document.getElementById('prevBtn').onclick=()=>{
-  if(current>0){ current--; render(); }
-};
-
 document.getElementById('fiftyBtn').onclick=()=>{
-  const correct=questions[current].correct;
-  const wrong=[0,1,2,3].filter(i=>i!==correct).sort(()=>Math.random()-.5).slice(0,2);
+  if(!currentQuestion) return;
+  const wrong=[0,1,2,3]
+    .filter(i=>i!==currentQuestion.correctIndex)
+    .sort(()=>Math.random()-.5)
+    .slice(0,2);
   wrong.forEach(i=>answers[i].classList.add('disabled'));
 };
-document.getElementById('pubBtn').onclick=()=>{
-  alert('Prévia: na próxima versão podemos abrir uma votação da plateia e mostrar os percentuais na tela.');
-};
-document.getElementById('swapBtn').onclick=()=>{
-  alert('Prévia: na próxima versão este botão trocará por outra pergunta do mesmo nível.');
+
+document.getElementById('swapBtn').onclick=async()=>{
+  await loadQuestion(current+1);
 };
 
-render();
+document.getElementById('pubBtn').onclick=()=>{
+  alert('Ajuda do público: podemos implementar a votação real em uma próxima etapa.');
+};
+
+document.getElementById('newPlayerBtn').onclick=async()=>{
+  document.getElementById('overlay').classList.add('hidden');
+  playerNo++;
+  localStorage.setItem('chopao_player_no',String(playerNo));
+  current=0;
+  questionHistory=[];
+  await loadQuestion(1);
+};
+
+document.getElementById('newSessionBtn').onclick=async()=>{
+  const ok=confirm('Iniciar uma NOVA SESSÃO? Isso libera novamente todas as perguntas para esta nova noite/evento.');
+  if(!ok) return;
+
+  sessionId=null;
+  localStorage.removeItem('chopao_session_id');
+  localUsed=new Set();
+  localStorage.setItem('chopao_used_ids','[]');
+  playerNo=1;
+  localStorage.setItem('chopao_player_no','1');
+
+  await ensureSession();
+  current=0;
+  questionHistory=[];
+  await loadQuestion(1);
+};
+
+(async function init(){
+  try{
+    if(supabaseClient){
+      setStatus('CONECTANDO SUPABASE...');
+      await ensureSession();
+      setStatus('SUPABASE • SESSÃO ATIVA',true);
+    }else{
+      await ensureLocalBank();
+      await ensureSession();
+      setStatus('BANCO LOCAL • 150 PERGUNTAS');
+    }
+    await loadQuestion(1);
+  }catch(err){
+    console.error(err);
+    setStatus('ERRO NO BANCO');
+    alert('Falha ao iniciar o banco de perguntas: '+(err.message||err));
+  }
+})();

@@ -1,15 +1,37 @@
-# Show do Chopão — V9 Fluido
+# Show do Chopão — V10 • Banco de 150 perguntas
 
-Esta versão remove o sistema de escala fixa 1920x1080, que estava encolhendo toda a interface e criando grandes faixas laterais em telas ultrawide/baixas.
+## O que esta versão faz
+- 150 perguntas cadastradas.
+- 15 níveis de dificuldade.
+- Pergunta 1 sempre usa nível 1; pergunta 15 sempre usa nível 15.
+- Sorteio aleatório dentro de cada nível.
+- Nenhuma pergunta se repete dentro da mesma sessão/noite.
+- As quatro alternativas são embaralhadas a cada exibição.
+- Botão TROCA PERGUNTA busca outra questão inédita do mesmo nível.
+- Botão NOVO PARTICIPANTE volta à pergunta 1 sem liberar perguntas já usadas.
+- Botão NOVA SESSÃO libera o banco inteiro para um novo evento.
+- Funciona sem Supabase usando o banco local `questions.json`.
+- Quando configurado, usa Supabase para manter o histórico da sessão no banco.
 
-## O que mudou
-- layout agora usa 100% da largura e 100% da altura reais da tela;
-- sem prancheta fixa e sem `transform: scale()`;
-- logo fica presa a uma área própria e não pode invadir a pergunta;
-- texugo usa bem mais da altura disponível;
-- escada, pergunta, respostas e botões se adaptam com `clamp()`, `vw` e `vh`;
-- regra específica para telas muito largas;
-- regra específica para telas baixas;
-- mantém os PNGs transparentes aprovados.
+## Distribuição
+Nível 1: 20
+Nível 2: 18
+Nível 3: 16
+Nível 4: 14
+Nível 5: 12
+Níveis 6 e 7: 10 cada
+Níveis 8, 9 e 10: 8 cada
+Níveis 11 e 12: 6 cada
+Níveis 13 e 14: 5 cada
+Nível 15: 4
 
-Suba todos os arquivos deste ZIP na raiz do repositório GitHub/Vercel.
+Total: 150.
+
+## Supabase
+Arquivos prontos:
+- `supabase/01_schema.sql`
+- `supabase/02_seed_150_questions.sql`
+- `config.js`
+
+Depois de criar o projeto no Supabase, rode os dois SQLs nessa ordem e preencha `config.js` com URL + chave pública anon/publishable.
+Nunca use a chave `service_role` no site.

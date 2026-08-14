@@ -1,0 +1,2102 @@
+[
+  {
+    "id": 1,
+    "difficulty": 1,
+    "category": "Conhecimentos Gerais",
+    "prompt": "Qual animal é conhecido por miar?",
+    "answers": [
+      "Gato",
+      "Cavalo",
+      "Galinha",
+      "Coelho"
+    ],
+    "correct_answer": "Gato",
+    "active": true
+  },
+  {
+    "id": 2,
+    "difficulty": 1,
+    "category": "Geografia",
+    "prompt": "Qual é a capital do Brasil?",
+    "answers": [
+      "Brasília",
+      "São Paulo",
+      "Rio de Janeiro",
+      "Salvador"
+    ],
+    "correct_answer": "Brasília",
+    "active": true
+  },
+  {
+    "id": 3,
+    "difficulty": 1,
+    "category": "Ciência",
+    "prompt": "Quantos dias normalmente tem uma semana?",
+    "answers": [
+      "7",
+      "5",
+      "6",
+      "8"
+    ],
+    "correct_answer": "7",
+    "active": true
+  },
+  {
+    "id": 4,
+    "difficulty": 1,
+    "category": "Cultura Pop",
+    "prompt": "Qual super-herói é conhecido como Homem-Aranha?",
+    "answers": [
+      "Peter Parker",
+      "Bruce Wayne",
+      "Clark Kent",
+      "Tony Stark"
+    ],
+    "correct_answer": "Peter Parker",
+    "active": true
+  },
+  {
+    "id": 5,
+    "difficulty": 1,
+    "category": "Gastronomia",
+    "prompt": "Qual destes é um tipo de massa italiana?",
+    "answers": [
+      "Espaguete",
+      "Sushi",
+      "Taco",
+      "Cuscuz"
+    ],
+    "correct_answer": "Espaguete",
+    "active": true
+  },
+  {
+    "id": 6,
+    "difficulty": 1,
+    "category": "Música",
+    "prompt": "Qual instrumento geralmente tem seis cordas?",
+    "answers": [
+      "Violão",
+      "Flauta",
+      "Trompete",
+      "Pandeiro"
+    ],
+    "correct_answer": "Violão",
+    "active": true
+  },
+  {
+    "id": 7,
+    "difficulty": 1,
+    "category": "Esportes",
+    "prompt": "No futebol, qual parte do corpo o goleiro pode usar para segurar a bola dentro da área?",
+    "answers": [
+      "Mãos",
+      "Cotovelos apenas",
+      "Cabeça apenas",
+      "Pés apenas"
+    ],
+    "correct_answer": "Mãos",
+    "active": true
+  },
+  {
+    "id": 8,
+    "difficulty": 1,
+    "category": "História",
+    "prompt": "Em qual país ficam as pirâmides de Gizé?",
+    "answers": [
+      "Egito",
+      "México",
+      "Índia",
+      "Grécia"
+    ],
+    "correct_answer": "Egito",
+    "active": true
+  },
+  {
+    "id": 9,
+    "difficulty": 1,
+    "category": "Geografia",
+    "prompt": "Qual destes é um oceano?",
+    "answers": [
+      "Atlântico",
+      "Saara",
+      "Andes",
+      "Nilo"
+    ],
+    "correct_answer": "Atlântico",
+    "active": true
+  },
+  {
+    "id": 10,
+    "difficulty": 1,
+    "category": "Ciência",
+    "prompt": "A água congela, ao nível do mar, aproximadamente a quantos graus Celsius?",
+    "answers": [
+      "0 °C",
+      "10 °C",
+      "50 °C",
+      "100 °C"
+    ],
+    "correct_answer": "0 °C",
+    "active": true
+  },
+  {
+    "id": 11,
+    "difficulty": 1,
+    "category": "Cinema",
+    "prompt": "Qual personagem vive em uma casa de abacaxi no fundo do mar?",
+    "answers": [
+      "Bob Esponja",
+      "Shrek",
+      "Garfield",
+      "Scooby-Doo"
+    ],
+    "correct_answer": "Bob Esponja",
+    "active": true
+  },
+  {
+    "id": 12,
+    "difficulty": 1,
+    "category": "Conhecimentos Gerais",
+    "prompt": "Quantos meses há em um ano?",
+    "answers": [
+      "12",
+      "10",
+      "11",
+      "13"
+    ],
+    "correct_answer": "12",
+    "active": true
+  },
+  {
+    "id": 13,
+    "difficulty": 1,
+    "category": "Gastronomia",
+    "prompt": "Qual bebida é produzida pela fermentação de uvas?",
+    "answers": [
+      "Vinho",
+      "Café",
+      "Chá",
+      "Refrigerante"
+    ],
+    "correct_answer": "Vinho",
+    "active": true
+  },
+  {
+    "id": 14,
+    "difficulty": 1,
+    "category": "Geografia",
+    "prompt": "Qual destes países fica na América do Sul?",
+    "answers": [
+      "Argentina",
+      "Japão",
+      "Noruega",
+      "Egito"
+    ],
+    "correct_answer": "Argentina",
+    "active": true
+  },
+  {
+    "id": 15,
+    "difficulty": 1,
+    "category": "Ciência",
+    "prompt": "Qual planeta é conhecido como Planeta Vermelho?",
+    "answers": [
+      "Marte",
+      "Vênus",
+      "Júpiter",
+      "Netuno"
+    ],
+    "correct_answer": "Marte",
+    "active": true
+  },
+  {
+    "id": 16,
+    "difficulty": 1,
+    "category": "Música",
+    "prompt": "Quem canta normalmente em um karaokê?",
+    "answers": [
+      "O participante",
+      "O garçom obrigatoriamente",
+      "Somente uma banda",
+      "Apenas o DJ"
+    ],
+    "correct_answer": "O participante",
+    "active": true
+  },
+  {
+    "id": 17,
+    "difficulty": 1,
+    "category": "Esportes",
+    "prompt": "Quantos jogadores cada time tem em campo no futebol, no início da partida?",
+    "answers": [
+      "11",
+      "9",
+      "10",
+      "12"
+    ],
+    "correct_answer": "11",
+    "active": true
+  },
+  {
+    "id": 18,
+    "difficulty": 1,
+    "category": "Conhecimentos Gerais",
+    "prompt": "Qual destes objetos serve para indicar as horas?",
+    "answers": [
+      "Relógio",
+      "Garfo",
+      "Travesseiro",
+      "Escova"
+    ],
+    "correct_answer": "Relógio",
+    "active": true
+  },
+  {
+    "id": 19,
+    "difficulty": 1,
+    "category": "Geografia",
+    "prompt": "Qual é a maior cidade do estado de São Paulo em população?",
+    "answers": [
+      "São Paulo",
+      "Jundiaí",
+      "Santos",
+      "Campinas"
+    ],
+    "correct_answer": "São Paulo",
+    "active": true
+  },
+  {
+    "id": 20,
+    "difficulty": 1,
+    "category": "Cultura Pop",
+    "prompt": "Qual personagem é um encanador da Nintendo?",
+    "answers": [
+      "Mario",
+      "Sonic",
+      "Kratos",
+      "Pikachu"
+    ],
+    "correct_answer": "Mario",
+    "active": true
+  },
+  {
+    "id": 21,
+    "difficulty": 2,
+    "category": "Geografia",
+    "prompt": "Qual é a capital da Argentina?",
+    "answers": [
+      "Buenos Aires",
+      "Rosário",
+      "Córdoba",
+      "Mendoza"
+    ],
+    "correct_answer": "Buenos Aires",
+    "active": true
+  },
+  {
+    "id": 22,
+    "difficulty": 2,
+    "category": "Ciência",
+    "prompt": "Qual gás é essencial para a respiração humana?",
+    "answers": [
+      "Oxigênio",
+      "Hélio",
+      "Neônio",
+      "Hidrogênio"
+    ],
+    "correct_answer": "Oxigênio",
+    "active": true
+  },
+  {
+    "id": 23,
+    "difficulty": 2,
+    "category": "História",
+    "prompt": "Quem foi o primeiro imperador do Brasil?",
+    "answers": [
+      "Dom Pedro I",
+      "Dom Pedro II",
+      "Getúlio Vargas",
+      "Deodoro da Fonseca"
+    ],
+    "correct_answer": "Dom Pedro I",
+    "active": true
+  },
+  {
+    "id": 24,
+    "difficulty": 2,
+    "category": "Música",
+    "prompt": "Qual banda gravou 'Bohemian Rhapsody'?",
+    "answers": [
+      "Queen",
+      "U2",
+      "Oasis",
+      "Nirvana"
+    ],
+    "correct_answer": "Queen",
+    "active": true
+  },
+  {
+    "id": 25,
+    "difficulty": 2,
+    "category": "Gastronomia",
+    "prompt": "Qual destilado é a base clássica da caipirinha?",
+    "answers": [
+      "Cachaça",
+      "Gin",
+      "Rum",
+      "Whisky"
+    ],
+    "correct_answer": "Cachaça",
+    "active": true
+  },
+  {
+    "id": 26,
+    "difficulty": 2,
+    "category": "Esportes",
+    "prompt": "Quantos pontos vale uma cesta de lance livre no basquete?",
+    "answers": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct_answer": "1",
+    "active": true
+  },
+  {
+    "id": 27,
+    "difficulty": 2,
+    "category": "Cinema",
+    "prompt": "Qual ogro verde é protagonista de uma famosa franquia de animação?",
+    "answers": [
+      "Shrek",
+      "Hulk",
+      "Grinch",
+      "Yoda"
+    ],
+    "correct_answer": "Shrek",
+    "active": true
+  },
+  {
+    "id": 28,
+    "difficulty": 2,
+    "category": "Geografia",
+    "prompt": "Qual país tem Lisboa como capital?",
+    "answers": [
+      "Portugal",
+      "Espanha",
+      "Itália",
+      "Bélgica"
+    ],
+    "correct_answer": "Portugal",
+    "active": true
+  },
+  {
+    "id": 29,
+    "difficulty": 2,
+    "category": "Ciência",
+    "prompt": "Qual órgão bombeia o sangue pelo corpo?",
+    "answers": [
+      "Coração",
+      "Pulmão",
+      "Fígado",
+      "Rim"
+    ],
+    "correct_answer": "Coração",
+    "active": true
+  },
+  {
+    "id": 30,
+    "difficulty": 2,
+    "category": "Conhecimentos Gerais",
+    "prompt": "Quantos lados tem um hexágono?",
+    "answers": [
+      "6",
+      "5",
+      "7",
+      "8"
+    ],
+    "correct_answer": "6",
+    "active": true
+  },
+  {
+    "id": 31,
+    "difficulty": 2,
+    "category": "História",
+    "prompt": "A chegada dos portugueses ao Brasil ocorreu em qual século?",
+    "answers": [
+      "Século XVI",
+      "Século XIV",
+      "Século XV",
+      "Século XVII"
+    ],
+    "correct_answer": "Século XVI",
+    "active": true
+  },
+  {
+    "id": 32,
+    "difficulty": 2,
+    "category": "Cultura Pop",
+    "prompt": "Qual é o nome do ratinho mascote da Disney?",
+    "answers": [
+      "Mickey Mouse",
+      "Jerry",
+      "Stuart Little",
+      "Remy"
+    ],
+    "correct_answer": "Mickey Mouse",
+    "active": true
+  },
+  {
+    "id": 33,
+    "difficulty": 2,
+    "category": "Geografia",
+    "prompt": "Qual rio é famoso por atravessar o Egito?",
+    "answers": [
+      "Nilo",
+      "Danúbio",
+      "Mississippi",
+      "Tâmisa"
+    ],
+    "correct_answer": "Nilo",
+    "active": true
+  },
+  {
+    "id": 34,
+    "difficulty": 2,
+    "category": "Música",
+    "prompt": "Qual destes instrumentos tem teclas pretas e brancas?",
+    "answers": [
+      "Piano",
+      "Violino",
+      "Saxofone",
+      "Bateria"
+    ],
+    "correct_answer": "Piano",
+    "active": true
+  },
+  {
+    "id": 35,
+    "difficulty": 2,
+    "category": "Gastronomia",
+    "prompt": "Guacamole é preparado principalmente com qual ingrediente?",
+    "answers": [
+      "Abacate",
+      "Batata",
+      "Tomate",
+      "Pepino"
+    ],
+    "correct_answer": "Abacate",
+    "active": true
+  },
+  {
+    "id": 36,
+    "difficulty": 2,
+    "category": "Esportes",
+    "prompt": "Em qual esporte se usa uma raquete e uma peteca?",
+    "answers": [
+      "Badminton",
+      "Rugby",
+      "Handebol",
+      "Beisebol"
+    ],
+    "correct_answer": "Badminton",
+    "active": true
+  },
+  {
+    "id": 37,
+    "difficulty": 2,
+    "category": "Ciência",
+    "prompt": "Qual é o satélite natural da Terra?",
+    "answers": [
+      "Lua",
+      "Sol",
+      "Marte",
+      "Vênus"
+    ],
+    "correct_answer": "Lua",
+    "active": true
+  },
+  {
+    "id": 38,
+    "difficulty": 2,
+    "category": "Conhecimentos Gerais",
+    "prompt": "Qual idioma é falado majoritariamente no Brasil?",
+    "answers": [
+      "Português",
+      "Espanhol",
+      "Francês",
+      "Italiano"
+    ],
+    "correct_answer": "Português",
+    "active": true
+  },
+  {
+    "id": 39,
+    "difficulty": 3,
+    "category": "Geografia",
+    "prompt": "Qual é a capital do Canadá?",
+    "answers": [
+      "Ottawa",
+      "Toronto",
+      "Vancouver",
+      "Montreal"
+    ],
+    "correct_answer": "Ottawa",
+    "active": true
+  },
+  {
+    "id": 40,
+    "difficulty": 3,
+    "category": "Ciência",
+    "prompt": "Qual elemento químico tem símbolo Fe?",
+    "answers": [
+      "Ferro",
+      "Flúor",
+      "Fósforo",
+      "Frâncio"
+    ],
+    "correct_answer": "Ferro",
+    "active": true
+  },
+  {
+    "id": 41,
+    "difficulty": 3,
+    "category": "História",
+    "prompt": "Qual navegante é tradicionalmente associado à chegada portuguesa ao Brasil em 1500?",
+    "answers": [
+      "Pedro Álvares Cabral",
+      "Vasco da Gama",
+      "Fernão de Magalhães",
+      "Américo Vespúcio"
+    ],
+    "correct_answer": "Pedro Álvares Cabral",
+    "active": true
+  },
+  {
+    "id": 42,
+    "difficulty": 3,
+    "category": "Literatura",
+    "prompt": "Quem escreveu 'Dom Casmurro'?",
+    "answers": [
+      "Machado de Assis",
+      "José de Alencar",
+      "Lima Barreto",
+      "Graciliano Ramos"
+    ],
+    "correct_answer": "Machado de Assis",
+    "active": true
+  },
+  {
+    "id": 43,
+    "difficulty": 3,
+    "category": "Música",
+    "prompt": "Qual grupo britânico tinha John Lennon e Paul McCartney?",
+    "answers": [
+      "The Beatles",
+      "The Rolling Stones",
+      "Pink Floyd",
+      "The Who"
+    ],
+    "correct_answer": "The Beatles",
+    "active": true
+  },
+  {
+    "id": 44,
+    "difficulty": 3,
+    "category": "Gastronomia",
+    "prompt": "Margarita clássica leva tequila, limão e qual licor?",
+    "answers": [
+      "Licor de laranja",
+      "Licor de café",
+      "Amaretto",
+      "Vermute tinto"
+    ],
+    "correct_answer": "Licor de laranja",
+    "active": true
+  },
+  {
+    "id": 45,
+    "difficulty": 3,
+    "category": "Esportes",
+    "prompt": "Qual país venceu a Copa do Mundo masculina de 2002?",
+    "answers": [
+      "Brasil",
+      "Alemanha",
+      "França",
+      "Argentina"
+    ],
+    "correct_answer": "Brasil",
+    "active": true
+  },
+  {
+    "id": 46,
+    "difficulty": 3,
+    "category": "Cinema",
+    "prompt": "Quem é o arqueólogo aventureiro interpretado por Harrison Ford em uma famosa franquia?",
+    "answers": [
+      "Indiana Jones",
+      "Rocky Balboa",
+      "John Rambo",
+      "Ethan Hunt"
+    ],
+    "correct_answer": "Indiana Jones",
+    "active": true
+  },
+  {
+    "id": 47,
+    "difficulty": 3,
+    "category": "Geografia",
+    "prompt": "Qual é o maior oceano da Terra?",
+    "answers": [
+      "Pacífico",
+      "Atlântico",
+      "Índico",
+      "Ártico"
+    ],
+    "correct_answer": "Pacífico",
+    "active": true
+  },
+  {
+    "id": 48,
+    "difficulty": 3,
+    "category": "Ciência",
+    "prompt": "Qual é a raiz quadrada de 144?",
+    "answers": [
+      "12",
+      "10",
+      "11",
+      "14"
+    ],
+    "correct_answer": "12",
+    "active": true
+  },
+  {
+    "id": 49,
+    "difficulty": 3,
+    "category": "História",
+    "prompt": "Qual civilização construiu Machu Picchu?",
+    "answers": [
+      "Inca",
+      "Maia",
+      "Asteca",
+      "Romana"
+    ],
+    "correct_answer": "Inca",
+    "active": true
+  },
+  {
+    "id": 50,
+    "difficulty": 3,
+    "category": "Cultura Pop",
+    "prompt": "Qual criatura amarela é mascote da franquia Pokémon?",
+    "answers": [
+      "Pikachu",
+      "Charmander",
+      "Meowth",
+      "Psyduck"
+    ],
+    "correct_answer": "Pikachu",
+    "active": true
+  },
+  {
+    "id": 51,
+    "difficulty": 3,
+    "category": "Geografia",
+    "prompt": "Qual país tem Tóquio como capital?",
+    "answers": [
+      "Japão",
+      "China",
+      "Coreia do Sul",
+      "Tailândia"
+    ],
+    "correct_answer": "Japão",
+    "active": true
+  },
+  {
+    "id": 52,
+    "difficulty": 3,
+    "category": "Música",
+    "prompt": "Qual cantor ficou conhecido como 'Rei do Pop'?",
+    "answers": [
+      "Michael Jackson",
+      "Elvis Presley",
+      "Prince",
+      "Freddie Mercury"
+    ],
+    "correct_answer": "Michael Jackson",
+    "active": true
+  },
+  {
+    "id": 53,
+    "difficulty": 3,
+    "category": "Ciência",
+    "prompt": "Qual vitamina é produzida pelo corpo com ajuda da exposição ao sol?",
+    "answers": [
+      "Vitamina D",
+      "Vitamina C",
+      "Vitamina B12",
+      "Vitamina K"
+    ],
+    "correct_answer": "Vitamina D",
+    "active": true
+  },
+  {
+    "id": 54,
+    "difficulty": 3,
+    "category": "Conhecimentos Gerais",
+    "prompt": "Quantos minutos há em duas horas e meia?",
+    "answers": [
+      "150",
+      "120",
+      "135",
+      "180"
+    ],
+    "correct_answer": "150",
+    "active": true
+  },
+  {
+    "id": 55,
+    "difficulty": 4,
+    "category": "Geografia",
+    "prompt": "Qual destes países não faz fronteira com o Brasil?",
+    "answers": [
+      "Chile",
+      "Bolívia",
+      "Peru",
+      "Colômbia"
+    ],
+    "correct_answer": "Chile",
+    "active": true
+  },
+  {
+    "id": 56,
+    "difficulty": 4,
+    "category": "Ciência",
+    "prompt": "Qual é o maior órgão do corpo humano?",
+    "answers": [
+      "Pele",
+      "Fígado",
+      "Pulmão",
+      "Coração"
+    ],
+    "correct_answer": "Pele",
+    "active": true
+  },
+  {
+    "id": 57,
+    "difficulty": 4,
+    "category": "História",
+    "prompt": "A Revolução Francesa começou em qual ano?",
+    "answers": [
+      "1789",
+      "1776",
+      "1815",
+      "1848"
+    ],
+    "correct_answer": "1789",
+    "active": true
+  },
+  {
+    "id": 58,
+    "difficulty": 4,
+    "category": "Literatura",
+    "prompt": "Quem escreveu 'O Pequeno Príncipe'?",
+    "answers": [
+      "Antoine de Saint-Exupéry",
+      "Victor Hugo",
+      "Jules Verne",
+      "Albert Camus"
+    ],
+    "correct_answer": "Antoine de Saint-Exupéry",
+    "active": true
+  },
+  {
+    "id": 59,
+    "difficulty": 4,
+    "category": "Música",
+    "prompt": "Qual banda lançou o álbum 'The Dark Side of the Moon'?",
+    "answers": [
+      "Pink Floyd",
+      "Queen",
+      "Led Zeppelin",
+      "The Doors"
+    ],
+    "correct_answer": "Pink Floyd",
+    "active": true
+  },
+  {
+    "id": 60,
+    "difficulty": 4,
+    "category": "Gastronomia",
+    "prompt": "Qual ingrediente dá a cor característica ao risoto alla milanese?",
+    "answers": [
+      "Açafrão",
+      "Páprica",
+      "Cúrcuma",
+      "Tomate"
+    ],
+    "correct_answer": "Açafrão",
+    "active": true
+  },
+  {
+    "id": 61,
+    "difficulty": 4,
+    "category": "Esportes",
+    "prompt": "Em qual cidade foram realizados os Jogos Olímpicos de 2016?",
+    "answers": [
+      "Rio de Janeiro",
+      "São Paulo",
+      "Londres",
+      "Tóquio"
+    ],
+    "correct_answer": "Rio de Janeiro",
+    "active": true
+  },
+  {
+    "id": 62,
+    "difficulty": 4,
+    "category": "Cinema",
+    "prompt": "Qual diretor comandou 'Titanic' e 'Avatar'?",
+    "answers": [
+      "James Cameron",
+      "Steven Spielberg",
+      "Ridley Scott",
+      "Christopher Nolan"
+    ],
+    "correct_answer": "James Cameron",
+    "active": true
+  },
+  {
+    "id": 63,
+    "difficulty": 4,
+    "category": "Geografia",
+    "prompt": "Qual é a capital da Austrália?",
+    "answers": [
+      "Canberra",
+      "Sydney",
+      "Melbourne",
+      "Perth"
+    ],
+    "correct_answer": "Canberra",
+    "active": true
+  },
+  {
+    "id": 64,
+    "difficulty": 4,
+    "category": "Ciência",
+    "prompt": "Qual partícula possui carga elétrica negativa?",
+    "answers": [
+      "Elétron",
+      "Próton",
+      "Nêutron",
+      "Fóton"
+    ],
+    "correct_answer": "Elétron",
+    "active": true
+  },
+  {
+    "id": 65,
+    "difficulty": 4,
+    "category": "História",
+    "prompt": "Quem proclamou a República no Brasil em 1889?",
+    "answers": [
+      "Deodoro da Fonseca",
+      "Floriano Peixoto",
+      "Getúlio Vargas",
+      "Juscelino Kubitschek"
+    ],
+    "correct_answer": "Deodoro da Fonseca",
+    "active": true
+  },
+  {
+    "id": 66,
+    "difficulty": 4,
+    "category": "Cultura Pop",
+    "prompt": "Qual série apresenta as casas Stark, Lannister e Targaryen?",
+    "answers": [
+      "Game of Thrones",
+      "Vikings",
+      "The Witcher",
+      "Lost"
+    ],
+    "correct_answer": "Game of Thrones",
+    "active": true
+  },
+  {
+    "id": 67,
+    "difficulty": 4,
+    "category": "Música",
+    "prompt": "Qual instrumento é associado a Louis Armstrong?",
+    "answers": [
+      "Trompete",
+      "Piano",
+      "Violoncelo",
+      "Flauta"
+    ],
+    "correct_answer": "Trompete",
+    "active": true
+  },
+  {
+    "id": 68,
+    "difficulty": 4,
+    "category": "Conhecimentos Gerais",
+    "prompt": "Se um produto custa R$ 80 e recebe 25% de desconto, qual é o preço final?",
+    "answers": [
+      "R$ 60",
+      "R$ 55",
+      "R$ 65",
+      "R$ 70"
+    ],
+    "correct_answer": "R$ 60",
+    "active": true
+  },
+  {
+    "id": 69,
+    "difficulty": 5,
+    "category": "Geografia",
+    "prompt": "Qual é a capital da Turquia?",
+    "answers": [
+      "Ancara",
+      "Istambul",
+      "Esmirna",
+      "Bursa"
+    ],
+    "correct_answer": "Ancara",
+    "active": true
+  },
+  {
+    "id": 70,
+    "difficulty": 5,
+    "category": "Ciência",
+    "prompt": "Qual cientista formulou as três leis do movimento clássicas?",
+    "answers": [
+      "Isaac Newton",
+      "Charles Darwin",
+      "Louis Pasteur",
+      "Niels Bohr"
+    ],
+    "correct_answer": "Isaac Newton",
+    "active": true
+  },
+  {
+    "id": 71,
+    "difficulty": 5,
+    "category": "História",
+    "prompt": "Qual tratado encerrou oficialmente a Primeira Guerra Mundial entre Alemanha e Aliados?",
+    "answers": [
+      "Tratado de Versalhes",
+      "Tratado de Tordesilhas",
+      "Tratado de Utrecht",
+      "Tratado de Paris de 1763"
+    ],
+    "correct_answer": "Tratado de Versalhes",
+    "active": true
+  },
+  {
+    "id": 72,
+    "difficulty": 5,
+    "category": "Literatura",
+    "prompt": "Quem escreveu '1984'?",
+    "answers": [
+      "George Orwell",
+      "Aldous Huxley",
+      "Ray Bradbury",
+      "Franz Kafka"
+    ],
+    "correct_answer": "George Orwell",
+    "active": true
+  },
+  {
+    "id": 73,
+    "difficulty": 5,
+    "category": "Música",
+    "prompt": "Qual compositor ficou famoso por obras como a Quinta Sinfonia e 'Für Elise'?",
+    "answers": [
+      "Beethoven",
+      "Mozart",
+      "Bach",
+      "Chopin"
+    ],
+    "correct_answer": "Beethoven",
+    "active": true
+  },
+  {
+    "id": 74,
+    "difficulty": 5,
+    "category": "Gastronomia",
+    "prompt": "Em um Negroni clássico, gin é combinado com Campari e qual outro ingrediente?",
+    "answers": [
+      "Vermute tinto",
+      "Vermute seco",
+      "Cointreau",
+      "Licor de café"
+    ],
+    "correct_answer": "Vermute tinto",
+    "active": true
+  },
+  {
+    "id": 75,
+    "difficulty": 5,
+    "category": "Esportes",
+    "prompt": "Quantos sets um tenista masculino precisa vencer em uma partida de melhor de cinco sets?",
+    "answers": [
+      "3",
+      "2",
+      "4",
+      "5"
+    ],
+    "correct_answer": "3",
+    "active": true
+  },
+  {
+    "id": 76,
+    "difficulty": 5,
+    "category": "Cinema",
+    "prompt": "Qual filme de 1994 apresenta os personagens Vincent Vega e Jules Winnfield?",
+    "answers": [
+      "Pulp Fiction",
+      "Seven",
+      "Clube da Luta",
+      "Os Bons Companheiros"
+    ],
+    "correct_answer": "Pulp Fiction",
+    "active": true
+  },
+  {
+    "id": 77,
+    "difficulty": 5,
+    "category": "Geografia",
+    "prompt": "Qual cadeia de montanhas separa, em grande parte, a Europa da Ásia na Rússia?",
+    "answers": [
+      "Montes Urais",
+      "Alpes",
+      "Andes",
+      "Cárpatos"
+    ],
+    "correct_answer": "Montes Urais",
+    "active": true
+  },
+  {
+    "id": 78,
+    "difficulty": 5,
+    "category": "Ciência",
+    "prompt": "Qual é a fórmula química da água oxigenada?",
+    "answers": [
+      "H₂O₂",
+      "H₂O",
+      "CO₂",
+      "O₃"
+    ],
+    "correct_answer": "H₂O₂",
+    "active": true
+  },
+  {
+    "id": 79,
+    "difficulty": 5,
+    "category": "História",
+    "prompt": "Quem foi o líder sul-africano que se tornou presidente em 1994 após décadas de apartheid?",
+    "answers": [
+      "Nelson Mandela",
+      "Desmond Tutu",
+      "F. W. de Klerk",
+      "Thabo Mbeki"
+    ],
+    "correct_answer": "Nelson Mandela",
+    "active": true
+  },
+  {
+    "id": 80,
+    "difficulty": 5,
+    "category": "Conhecimentos Gerais",
+    "prompt": "Qual número romano representa 50?",
+    "answers": [
+      "L",
+      "C",
+      "D",
+      "X"
+    ],
+    "correct_answer": "L",
+    "active": true
+  },
+  {
+    "id": 81,
+    "difficulty": 6,
+    "category": "Geografia",
+    "prompt": "Qual é a capital da Nova Zelândia?",
+    "answers": [
+      "Wellington",
+      "Auckland",
+      "Christchurch",
+      "Hamilton"
+    ],
+    "correct_answer": "Wellington",
+    "active": true
+  },
+  {
+    "id": 82,
+    "difficulty": 6,
+    "category": "Ciência",
+    "prompt": "Qual escala mede a dureza dos minerais de 1 a 10?",
+    "answers": [
+      "Escala de Mohs",
+      "Escala Richter",
+      "Escala Kelvin",
+      "Escala Beaufort"
+    ],
+    "correct_answer": "Escala de Mohs",
+    "active": true
+  },
+  {
+    "id": 83,
+    "difficulty": 6,
+    "category": "História",
+    "prompt": "Qual imperador francês foi derrotado definitivamente na Batalha de Waterloo?",
+    "answers": [
+      "Napoleão Bonaparte",
+      "Luís XIV",
+      "Carlos Magno",
+      "Napoleão III"
+    ],
+    "correct_answer": "Napoleão Bonaparte",
+    "active": true
+  },
+  {
+    "id": 84,
+    "difficulty": 6,
+    "category": "Literatura",
+    "prompt": "Qual autor criou o detetive Sherlock Holmes?",
+    "answers": [
+      "Arthur Conan Doyle",
+      "Agatha Christie",
+      "Edgar Allan Poe",
+      "G. K. Chesterton"
+    ],
+    "correct_answer": "Arthur Conan Doyle",
+    "active": true
+  },
+  {
+    "id": 85,
+    "difficulty": 6,
+    "category": "Música",
+    "prompt": "Qual compositor escreveu 'As Quatro Estações'?",
+    "answers": [
+      "Antonio Vivaldi",
+      "Giacomo Puccini",
+      "Johannes Brahms",
+      "Claude Debussy"
+    ],
+    "correct_answer": "Antonio Vivaldi",
+    "active": true
+  },
+  {
+    "id": 86,
+    "difficulty": 6,
+    "category": "Gastronomia",
+    "prompt": "Qual destilado é tradicionalmente usado no coquetel Daiquiri?",
+    "answers": [
+      "Rum branco",
+      "Vodka",
+      "Gin",
+      "Bourbon"
+    ],
+    "correct_answer": "Rum branco",
+    "active": true
+  },
+  {
+    "id": 87,
+    "difficulty": 6,
+    "category": "Esportes",
+    "prompt": "Em qual país surgiu o judô?",
+    "answers": [
+      "Japão",
+      "China",
+      "Coreia do Sul",
+      "Tailândia"
+    ],
+    "correct_answer": "Japão",
+    "active": true
+  },
+  {
+    "id": 88,
+    "difficulty": 6,
+    "category": "Cinema",
+    "prompt": "Qual atriz interpretou Hermione Granger nos filmes de Harry Potter?",
+    "answers": [
+      "Emma Watson",
+      "Keira Knightley",
+      "Natalie Portman",
+      "Emma Stone"
+    ],
+    "correct_answer": "Emma Watson",
+    "active": true
+  },
+  {
+    "id": 89,
+    "difficulty": 6,
+    "category": "Geografia",
+    "prompt": "Qual estreito separa a Espanha do Marrocos?",
+    "answers": [
+      "Estreito de Gibraltar",
+      "Estreito de Bering",
+      "Bósforo",
+      "Dardanelos"
+    ],
+    "correct_answer": "Estreito de Gibraltar",
+    "active": true
+  },
+  {
+    "id": 90,
+    "difficulty": 6,
+    "category": "Ciência",
+    "prompt": "Qual é o nome do processo pelo qual plantas convertem luz em energia química?",
+    "answers": [
+      "Fotossíntese",
+      "Fermentação",
+      "Osmose",
+      "Respiração anaeróbica"
+    ],
+    "correct_answer": "Fotossíntese",
+    "active": true
+  },
+  {
+    "id": 91,
+    "difficulty": 7,
+    "category": "História",
+    "prompt": "Qual cidade romana foi soterrada pela erupção do Vesúvio em 79 d.C.?",
+    "answers": [
+      "Pompeia",
+      "Cartago",
+      "Esparta",
+      "Ravena"
+    ],
+    "correct_answer": "Pompeia",
+    "active": true
+  },
+  {
+    "id": 92,
+    "difficulty": 7,
+    "category": "Geografia",
+    "prompt": "Qual país africano tem Adis Abeba como capital?",
+    "answers": [
+      "Etiópia",
+      "Quênia",
+      "Eritreia",
+      "Sudão"
+    ],
+    "correct_answer": "Etiópia",
+    "active": true
+  },
+  {
+    "id": 93,
+    "difficulty": 7,
+    "category": "Ciência",
+    "prompt": "Qual camada da atmosfera concentra a maior parte do ozônio que filtra radiação ultravioleta?",
+    "answers": [
+      "Estratosfera",
+      "Troposfera",
+      "Mesosfera",
+      "Termosfera"
+    ],
+    "correct_answer": "Estratosfera",
+    "active": true
+  },
+  {
+    "id": 94,
+    "difficulty": 7,
+    "category": "Literatura",
+    "prompt": "Quem escreveu 'Cem Anos de Solidão'?",
+    "answers": [
+      "Gabriel García Márquez",
+      "Mario Vargas Llosa",
+      "Jorge Luis Borges",
+      "Pablo Neruda"
+    ],
+    "correct_answer": "Gabriel García Márquez",
+    "active": true
+  },
+  {
+    "id": 95,
+    "difficulty": 7,
+    "category": "Música",
+    "prompt": "Qual banda irlandesa lançou o álbum 'The Joshua Tree'?",
+    "answers": [
+      "U2",
+      "The Cranberries",
+      "Oasis",
+      "R.E.M."
+    ],
+    "correct_answer": "U2",
+    "active": true
+  },
+  {
+    "id": 96,
+    "difficulty": 7,
+    "category": "Gastronomia",
+    "prompt": "Qual queijo italiano é tradicionalmente usado no tiramisù?",
+    "answers": [
+      "Mascarpone",
+      "Gorgonzola",
+      "Pecorino",
+      "Provolone"
+    ],
+    "correct_answer": "Mascarpone",
+    "active": true
+  },
+  {
+    "id": 97,
+    "difficulty": 7,
+    "category": "Esportes",
+    "prompt": "Qual é a distância oficial de uma maratona?",
+    "answers": [
+      "42,195 km",
+      "40 km",
+      "41,2 km",
+      "45 km"
+    ],
+    "correct_answer": "42,195 km",
+    "active": true
+  },
+  {
+    "id": 98,
+    "difficulty": 7,
+    "category": "Cinema",
+    "prompt": "Qual diretor criou a trilogia 'O Senhor dos Anéis' lançada entre 2001 e 2003?",
+    "answers": [
+      "Peter Jackson",
+      "George Lucas",
+      "Sam Raimi",
+      "Guillermo del Toro"
+    ],
+    "correct_answer": "Peter Jackson",
+    "active": true
+  },
+  {
+    "id": 99,
+    "difficulty": 7,
+    "category": "História",
+    "prompt": "Qual povo construiu a cidade de Petra, na atual Jordânia?",
+    "answers": [
+      "Nabateus",
+      "Fenícios",
+      "Hititas",
+      "Sumérios"
+    ],
+    "correct_answer": "Nabateus",
+    "active": true
+  },
+  {
+    "id": 100,
+    "difficulty": 7,
+    "category": "Ciência",
+    "prompt": "Qual unidade do SI mede resistência elétrica?",
+    "answers": [
+      "Ohm",
+      "Watt",
+      "Tesla",
+      "Pascal"
+    ],
+    "correct_answer": "Ohm",
+    "active": true
+  },
+  {
+    "id": 101,
+    "difficulty": 8,
+    "category": "Geografia",
+    "prompt": "Qual é a capital do Cazaquistão?",
+    "answers": [
+      "Astana",
+      "Almaty",
+      "Tashkent",
+      "Bishkek"
+    ],
+    "correct_answer": "Astana",
+    "active": true
+  },
+  {
+    "id": 102,
+    "difficulty": 8,
+    "category": "Ciência",
+    "prompt": "Qual é o número atômico do carbono?",
+    "answers": [
+      "6",
+      "4",
+      "8",
+      "12"
+    ],
+    "correct_answer": "6",
+    "active": true
+  },
+  {
+    "id": 103,
+    "difficulty": 8,
+    "category": "História",
+    "prompt": "Qual dinastia chinesa construiu grande parte da Cidade Proibida em Pequim?",
+    "answers": [
+      "Ming",
+      "Qing",
+      "Han",
+      "Tang"
+    ],
+    "correct_answer": "Ming",
+    "active": true
+  },
+  {
+    "id": 104,
+    "difficulty": 8,
+    "category": "Literatura",
+    "prompt": "Em 'Os Miseráveis', qual é o nome do ex-presidiário protagonista?",
+    "answers": [
+      "Jean Valjean",
+      "Javert",
+      "Marius Pontmercy",
+      "Thenardier"
+    ],
+    "correct_answer": "Jean Valjean",
+    "active": true
+  },
+  {
+    "id": 105,
+    "difficulty": 8,
+    "category": "Música",
+    "prompt": "Qual compositor escreveu a ópera 'A Flauta Mágica'?",
+    "answers": [
+      "Wolfgang Amadeus Mozart",
+      "Giuseppe Verdi",
+      "Richard Wagner",
+      "Giacomo Puccini"
+    ],
+    "correct_answer": "Wolfgang Amadeus Mozart",
+    "active": true
+  },
+  {
+    "id": 106,
+    "difficulty": 8,
+    "category": "Gastronomia",
+    "prompt": "Qual técnica culinária francesa consiste em cozinhar lentamente um alimento submerso em gordura?",
+    "answers": [
+      "Confit",
+      "Brasear",
+      "Flambar",
+      "Escalfar"
+    ],
+    "correct_answer": "Confit",
+    "active": true
+  },
+  {
+    "id": 107,
+    "difficulty": 8,
+    "category": "Esportes",
+    "prompt": "Qual país venceu a primeira Copa do Mundo de futebol masculino, em 1930?",
+    "answers": [
+      "Uruguai",
+      "Argentina",
+      "Brasil",
+      "Itália"
+    ],
+    "correct_answer": "Uruguai",
+    "active": true
+  },
+  {
+    "id": 108,
+    "difficulty": 8,
+    "category": "Cinema",
+    "prompt": "Qual filme de Stanley Kubrick é baseado em um romance de Anthony Burgess?",
+    "answers": [
+      "Laranja Mecânica",
+      "O Iluminado",
+      "Barry Lyndon",
+      "Nascido para Matar"
+    ],
+    "correct_answer": "Laranja Mecânica",
+    "active": true
+  },
+  {
+    "id": 109,
+    "difficulty": 9,
+    "category": "Geografia",
+    "prompt": "Qual é a capital da Eslovênia?",
+    "answers": [
+      "Liubliana",
+      "Bratislava",
+      "Zagreb",
+      "Sarajevo"
+    ],
+    "correct_answer": "Liubliana",
+    "active": true
+  },
+  {
+    "id": 110,
+    "difficulty": 9,
+    "category": "Ciência",
+    "prompt": "Qual físico propôs o princípio da incerteza na mecânica quântica?",
+    "answers": [
+      "Werner Heisenberg",
+      "Erwin Schrödinger",
+      "Max Planck",
+      "Paul Dirac"
+    ],
+    "correct_answer": "Werner Heisenberg",
+    "active": true
+  },
+  {
+    "id": 111,
+    "difficulty": 9,
+    "category": "História",
+    "prompt": "Qual batalha de 1066 consolidou a conquista normanda da Inglaterra?",
+    "answers": [
+      "Batalha de Hastings",
+      "Batalha de Agincourt",
+      "Batalha de Bosworth",
+      "Batalha de Stamford Bridge"
+    ],
+    "correct_answer": "Batalha de Hastings",
+    "active": true
+  },
+  {
+    "id": 112,
+    "difficulty": 9,
+    "category": "Literatura",
+    "prompt": "Quem escreveu 'O Nome da Rosa'?",
+    "answers": [
+      "Umberto Eco",
+      "Italo Calvino",
+      "Primo Levi",
+      "Alberto Moravia"
+    ],
+    "correct_answer": "Umberto Eco",
+    "active": true
+  },
+  {
+    "id": 113,
+    "difficulty": 9,
+    "category": "Música",
+    "prompt": "Qual músico de jazz lançou o álbum 'Kind of Blue'?",
+    "answers": [
+      "Miles Davis",
+      "John Coltrane",
+      "Duke Ellington",
+      "Thelonious Monk"
+    ],
+    "correct_answer": "Miles Davis",
+    "active": true
+  },
+  {
+    "id": 114,
+    "difficulty": 9,
+    "category": "Gastronomia",
+    "prompt": "Qual vinho fortificado é ingrediente tradicional do coquetel Bamboo?",
+    "answers": [
+      "Xerez",
+      "Porto",
+      "Madeira",
+      "Marsala"
+    ],
+    "correct_answer": "Xerez",
+    "active": true
+  },
+  {
+    "id": 115,
+    "difficulty": 9,
+    "category": "Esportes",
+    "prompt": "No snooker, quantos pontos vale a bola preta?",
+    "answers": [
+      "7",
+      "5",
+      "6",
+      "8"
+    ],
+    "correct_answer": "7",
+    "active": true
+  },
+  {
+    "id": 116,
+    "difficulty": 9,
+    "category": "Cinema",
+    "prompt": "Qual cineasta japonês dirigiu 'Os Sete Samurais'?",
+    "answers": [
+      "Akira Kurosawa",
+      "Yasujirō Ozu",
+      "Kenji Mizoguchi",
+      "Hayao Miyazaki"
+    ],
+    "correct_answer": "Akira Kurosawa",
+    "active": true
+  },
+  {
+    "id": 117,
+    "difficulty": 10,
+    "category": "Geografia",
+    "prompt": "Qual é a capital do Butão?",
+    "answers": [
+      "Thimphu",
+      "Paro",
+      "Kathmandu",
+      "Daca"
+    ],
+    "correct_answer": "Thimphu",
+    "active": true
+  },
+  {
+    "id": 118,
+    "difficulty": 10,
+    "category": "Ciência",
+    "prompt": "Qual organela celular é responsável principalmente pela produção de ATP na respiração aeróbica?",
+    "answers": [
+      "Mitocôndria",
+      "Lisossomo",
+      "Ribossomo",
+      "Complexo de Golgi"
+    ],
+    "correct_answer": "Mitocôndria",
+    "active": true
+  },
+  {
+    "id": 119,
+    "difficulty": 10,
+    "category": "História",
+    "prompt": "Qual tratado de 1648 é associado ao fim da Guerra dos Trinta Anos?",
+    "answers": [
+      "Paz de Vestfália",
+      "Tratado de Viena",
+      "Tratado de Utrecht",
+      "Paz de Augsburgo"
+    ],
+    "correct_answer": "Paz de Vestfália",
+    "active": true
+  },
+  {
+    "id": 120,
+    "difficulty": 10,
+    "category": "Literatura",
+    "prompt": "Qual autor escreveu 'O Som e a Fúria'?",
+    "answers": [
+      "William Faulkner",
+      "Ernest Hemingway",
+      "F. Scott Fitzgerald",
+      "John Steinbeck"
+    ],
+    "correct_answer": "William Faulkner",
+    "active": true
+  },
+  {
+    "id": 121,
+    "difficulty": 10,
+    "category": "Música",
+    "prompt": "Qual compositor escreveu o balé 'A Sagração da Primavera'?",
+    "answers": [
+      "Igor Stravinsky",
+      "Sergei Prokofiev",
+      "Pyotr Tchaikovsky",
+      "Dmitri Shostakovich"
+    ],
+    "correct_answer": "Igor Stravinsky",
+    "active": true
+  },
+  {
+    "id": 122,
+    "difficulty": 10,
+    "category": "Gastronomia",
+    "prompt": "Qual molho clássico francês é uma emulsão quente de gemas e manteiga clarificada?",
+    "answers": [
+      "Hollandaise",
+      "Béchamel",
+      "Velouté",
+      "Espagnole"
+    ],
+    "correct_answer": "Hollandaise",
+    "active": true
+  },
+  {
+    "id": 123,
+    "difficulty": 10,
+    "category": "Esportes",
+    "prompt": "Em qual cidade nasceu o movimento olímpico moderno com os primeiros Jogos de 1896?",
+    "answers": [
+      "Atenas",
+      "Paris",
+      "Londres",
+      "Roma"
+    ],
+    "correct_answer": "Atenas",
+    "active": true
+  },
+  {
+    "id": 124,
+    "difficulty": 10,
+    "category": "Cinema",
+    "prompt": "Qual filme de Federico Fellini venceu o Oscar de Melhor Filme Estrangeiro e acompanha o cineasta Guido Anselmi?",
+    "answers": [
+      "8½",
+      "La Dolce Vita",
+      "Amarcord",
+      "Noites de Cabíria"
+    ],
+    "correct_answer": "8½",
+    "active": true
+  },
+  {
+    "id": 125,
+    "difficulty": 11,
+    "category": "Geografia",
+    "prompt": "Qual país possui a região autônoma de Gagauzia?",
+    "answers": [
+      "Moldávia",
+      "Romênia",
+      "Geórgia",
+      "Bulgária"
+    ],
+    "correct_answer": "Moldávia",
+    "active": true
+  },
+  {
+    "id": 126,
+    "difficulty": 11,
+    "category": "Ciência",
+    "prompt": "Qual constante relaciona a energia de um fóton à sua frequência?",
+    "answers": [
+      "Constante de Planck",
+      "Constante de Boltzmann",
+      "Constante de Avogadro",
+      "Constante de Faraday"
+    ],
+    "correct_answer": "Constante de Planck",
+    "active": true
+  },
+  {
+    "id": 127,
+    "difficulty": 11,
+    "category": "História",
+    "prompt": "Qual imperador bizantino ordenou a compilação do Corpus Juris Civilis?",
+    "answers": [
+      "Justiniano I",
+      "Constantino XI",
+      "Teodósio I",
+      "Basílio II"
+    ],
+    "correct_answer": "Justiniano I",
+    "active": true
+  },
+  {
+    "id": 128,
+    "difficulty": 11,
+    "category": "Literatura",
+    "prompt": "Qual romance de Thomas Mann acompanha Hans Castorp em um sanatório nos Alpes suíços?",
+    "answers": [
+      "A Montanha Mágica",
+      "Morte em Veneza",
+      "Doutor Fausto",
+      "Os Buddenbrook"
+    ],
+    "correct_answer": "A Montanha Mágica",
+    "active": true
+  },
+  {
+    "id": 129,
+    "difficulty": 11,
+    "category": "Música",
+    "prompt": "Qual compositor francês escreveu 'Quarteto para o Fim dos Tempos'?",
+    "answers": [
+      "Olivier Messiaen",
+      "Maurice Ravel",
+      "Gabriel Fauré",
+      "Erik Satie"
+    ],
+    "correct_answer": "Olivier Messiaen",
+    "active": true
+  },
+  {
+    "id": 130,
+    "difficulty": 11,
+    "category": "Gastronomia",
+    "prompt": "Qual fungo é tradicionalmente usado para produzir queijos azuis como Roquefort?",
+    "answers": [
+      "Penicillium roqueforti",
+      "Saccharomyces cerevisiae",
+      "Aspergillus oryzae",
+      "Rhizopus oligosporus"
+    ],
+    "correct_answer": "Penicillium roqueforti",
+    "active": true
+  },
+  {
+    "id": 131,
+    "difficulty": 12,
+    "category": "Geografia",
+    "prompt": "Qual é a capital de Kiribati?",
+    "answers": [
+      "Tarawa do Sul",
+      "Funafuti",
+      "Majuro",
+      "Ngerulmud"
+    ],
+    "correct_answer": "Tarawa do Sul",
+    "active": true
+  },
+  {
+    "id": 132,
+    "difficulty": 12,
+    "category": "Ciência",
+    "prompt": "Qual matemático formulou as equações que unificam eletricidade e magnetismo no século XIX?",
+    "answers": [
+      "James Clerk Maxwell",
+      "Michael Faraday",
+      "André-Marie Ampère",
+      "Hendrik Lorentz"
+    ],
+    "correct_answer": "James Clerk Maxwell",
+    "active": true
+  },
+  {
+    "id": 133,
+    "difficulty": 12,
+    "category": "História",
+    "prompt": "Qual batalha naval de 1571 marcou uma grande derrota da frota otomana pela Liga Santa?",
+    "answers": [
+      "Batalha de Lepanto",
+      "Batalha de Trafalgar",
+      "Batalha de Salamina",
+      "Batalha de Actium"
+    ],
+    "correct_answer": "Batalha de Lepanto",
+    "active": true
+  },
+  {
+    "id": 134,
+    "difficulty": 12,
+    "category": "Literatura",
+    "prompt": "Quem escreveu o romance 'O Homem sem Qualidades'?",
+    "answers": [
+      "Robert Musil",
+      "Hermann Hesse",
+      "Stefan Zweig",
+      "Franz Werfel"
+    ],
+    "correct_answer": "Robert Musil",
+    "active": true
+  },
+  {
+    "id": 135,
+    "difficulty": 12,
+    "category": "Música",
+    "prompt": "Qual compositor escreveu a ópera 'Wozzeck'?",
+    "answers": [
+      "Alban Berg",
+      "Arnold Schoenberg",
+      "Anton Webern",
+      "Paul Hindemith"
+    ],
+    "correct_answer": "Alban Berg",
+    "active": true
+  },
+  {
+    "id": 136,
+    "difficulty": 12,
+    "category": "Cinema",
+    "prompt": "Qual diretor realizou o filme japonês 'A Mulher da Areia', de 1964?",
+    "answers": [
+      "Hiroshi Teshigahara",
+      "Masaki Kobayashi",
+      "Nagisa Oshima",
+      "Kon Ichikawa"
+    ],
+    "correct_answer": "Hiroshi Teshigahara",
+    "active": true
+  },
+  {
+    "id": 137,
+    "difficulty": 13,
+    "category": "Geografia",
+    "prompt": "Qual é o ponto mais baixo em terra firme exposta na África?",
+    "answers": [
+      "Lago Assal",
+      "Depressão de Qattara",
+      "Lago Tanganica",
+      "Danakil"
+    ],
+    "correct_answer": "Lago Assal",
+    "active": true
+  },
+  {
+    "id": 138,
+    "difficulty": 13,
+    "category": "Ciência",
+    "prompt": "Qual teorema relaciona simetrias contínuas a leis de conservação na física?",
+    "answers": [
+      "Teorema de Noether",
+      "Teorema de Green",
+      "Teorema de Bayes",
+      "Teorema de Stokes"
+    ],
+    "correct_answer": "Teorema de Noether",
+    "active": true
+  },
+  {
+    "id": 139,
+    "difficulty": 13,
+    "category": "História",
+    "prompt": "Qual casa dinástica governava a Áustria durante a maior parte da Guerra dos Trinta Anos?",
+    "answers": [
+      "Habsburgo",
+      "Bourbon",
+      "Hohenzollern",
+      "Wittelsbach"
+    ],
+    "correct_answer": "Habsburgo",
+    "active": true
+  },
+  {
+    "id": 140,
+    "difficulty": 13,
+    "category": "Literatura",
+    "prompt": "Qual escritor austríaco escreveu 'O Homem sem Posteridade' e 'Auto de Fé'?",
+    "answers": [
+      "Elias Canetti",
+      "Robert Musil",
+      "Joseph Roth",
+      "Arthur Schnitzler"
+    ],
+    "correct_answer": "Elias Canetti",
+    "active": true
+  },
+  {
+    "id": 141,
+    "difficulty": 13,
+    "category": "Música",
+    "prompt": "Qual compositor escreveu a obra orquestral 'Atmosphères', usada em '2001: Uma Odisseia no Espaço'?",
+    "answers": [
+      "György Ligeti",
+      "Béla Bartók",
+      "Krzysztof Penderecki",
+      "Iannis Xenakis"
+    ],
+    "correct_answer": "György Ligeti",
+    "active": true
+  },
+  {
+    "id": 142,
+    "difficulty": 14,
+    "category": "Geografia",
+    "prompt": "Qual microestado europeu tem Vaduz como capital?",
+    "answers": [
+      "Liechtenstein",
+      "Andorra",
+      "San Marino",
+      "Mônaco"
+    ],
+    "correct_answer": "Liechtenstein",
+    "active": true
+  },
+  {
+    "id": 143,
+    "difficulty": 14,
+    "category": "Ciência",
+    "prompt": "Qual físico introduziu o conceito de função de onda em uma equação fundamental da mecânica quântica?",
+    "answers": [
+      "Erwin Schrödinger",
+      "Wolfgang Pauli",
+      "Max Born",
+      "Enrico Fermi"
+    ],
+    "correct_answer": "Erwin Schrödinger",
+    "active": true
+  },
+  {
+    "id": 144,
+    "difficulty": 14,
+    "category": "História",
+    "prompt": "Qual imperador romano convocou o Concílio de Niceia de 325?",
+    "answers": [
+      "Constantino I",
+      "Teodósio I",
+      "Diocleciano",
+      "Juliano"
+    ],
+    "correct_answer": "Constantino I",
+    "active": true
+  },
+  {
+    "id": 145,
+    "difficulty": 14,
+    "category": "Literatura",
+    "prompt": "Qual obra de Italo Calvino é estruturada como uma conversa entre Marco Polo e Kublai Khan?",
+    "answers": [
+      "As Cidades Invisíveis",
+      "O Barão nas Árvores",
+      "Se um Viajante numa Noite de Inverno",
+      "O Cavaleiro Inexistente"
+    ],
+    "correct_answer": "As Cidades Invisíveis",
+    "active": true
+  },
+  {
+    "id": 146,
+    "difficulty": 14,
+    "category": "Música",
+    "prompt": "Qual compositor criou a técnica dodecafônica no início do século XX?",
+    "answers": [
+      "Arnold Schoenberg",
+      "Anton Webern",
+      "Alban Berg",
+      "Paul Hindemith"
+    ],
+    "correct_answer": "Arnold Schoenberg",
+    "active": true
+  },
+  {
+    "id": 147,
+    "difficulty": 15,
+    "category": "Ciência",
+    "prompt": "Qual número adimensional expressa a razão entre forças inerciais e viscosas em um fluido?",
+    "answers": [
+      "Número de Reynolds",
+      "Número de Mach",
+      "Número de Prandtl",
+      "Número de Froude"
+    ],
+    "correct_answer": "Número de Reynolds",
+    "active": true
+  },
+  {
+    "id": 148,
+    "difficulty": 15,
+    "category": "História",
+    "prompt": "Qual tratado de 1713 encerrou grande parte da Guerra da Sucessão Espanhola?",
+    "answers": [
+      "Tratado de Utrecht",
+      "Tratado de Rastatt",
+      "Tratado de Aix-la-Chapelle",
+      "Tratado dos Pireneus"
+    ],
+    "correct_answer": "Tratado de Utrecht",
+    "active": true
+  },
+  {
+    "id": 149,
+    "difficulty": 15,
+    "category": "Literatura",
+    "prompt": "Qual escritor polonês é autor do romance 'Ferdydurke'?",
+    "answers": [
+      "Witold Gombrowicz",
+      "Bruno Schulz",
+      "Czesław Miłosz",
+      "Stanisław Lem"
+    ],
+    "correct_answer": "Witold Gombrowicz",
+    "active": true
+  },
+  {
+    "id": 150,
+    "difficulty": 15,
+    "category": "Música",
+    "prompt": "Qual compositor escreveu a ópera 'Lulu', deixada incompleta à sua morte em 1935?",
+    "answers": [
+      "Alban Berg",
+      "Anton Webern",
+      "Arnold Schoenberg",
+      "Richard Strauss"
+    ],
+    "correct_answer": "Alban Berg",
+    "active": true
+  }
+]
