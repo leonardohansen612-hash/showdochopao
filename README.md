@@ -1,17 +1,11 @@
-# Show do Chopão — V3
+# Show do Chopão — V4
 
-Nova prévia com a identidade visual atualizada.
+Correções desta versão:
+- Logo reposicionada e redimensionada para não sobrepor a pergunta.
+- Logo recortada para ocupar melhor o espaço no topo.
+- Texugo com fundo removido novamente usando recorte seguro de borda, preservando o pelo branco.
+- Texugo reposicionado ao lado da Escada do Chopão com mais espaço.
+- Ajustes de proporção para monitores/TVs widescreen.
 
-## Mudanças
-- Logo nova do Show do Chopão no topo do jogo.
-- Texugo apresentador ao lado da Escada do Chopão.
-- Layout refeito para ficar mais próximo da referência visual do game show.
-- Bloco de pergunta + cronômetro.
-- Escada de 15 níveis de R$ 10,00 a R$ 500,00.
-- Botões 50/50, Troca Pergunta, Público, Errar, Parar e Acertar.
-- Perguntas de teste apenas para validar a interface.
-
-## GitHub / Vercel
-Envie todo o conteúdo do ZIP para a raiz do repositório.
-No Vercel, importe como projeto estático / Framework Preset: Other.
-Não é necessário Build Command.
+## Deploy
+Suba todo o conteúdo do ZIP na raiz do repositório GitHub e faça o deploy normal no Vercel.
