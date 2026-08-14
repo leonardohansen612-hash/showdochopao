@@ -1,11 +1,11 @@
-# Show do Chopão — V4
+# Show do Chopão — V5
 
-Correções desta versão:
-- Logo reposicionada e redimensionada para não sobrepor a pergunta.
-- Logo recortada para ocupar melhor o espaço no topo.
-- Texugo com fundo removido novamente usando recorte seguro de borda, preservando o pelo branco.
-- Texugo reposicionado ao lado da Escada do Chopão com mais espaço.
-- Ajustes de proporção para monitores/TVs widescreen.
+Correção focada no SITE:
+- layout refeito para impedir a logo de encostar/sobrepor a pergunta;
+- logo menor e centralizada em uma área própria;
+- texugo substituído pelo recorte limpo disponibilizado na conversa;
+- escada e texugo separados em colunas independentes;
+- proporções ajustadas para tela 16:9 / monitor widescreen;
+- mantém toda a lógica interativa da versão anterior.
 
-## Deploy
-Suba todo o conteúdo do ZIP na raiz do repositório GitHub e faça o deploy normal no Vercel.
+Suba todos os arquivos do ZIP na raiz do GitHub/Vercel.
