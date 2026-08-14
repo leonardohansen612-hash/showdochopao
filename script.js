@@ -388,7 +388,16 @@ function openCards(){
   lifelines.cardsUsed = true;
   updateLifelineButtons();
 
-  const values = [0,1,2,3].sort(()=>Math.random()-.5);
+  const values = [0,1,2,3];
+
+// Fisher-Yates: garante que as quatro cartas 0, 1, 2 e 3
+// estejam presentes exatamente uma vez, mudando apenas a posição.
+for(let i = values.length - 1; i > 0; i--){
+  const randomBuffer = new Uint32Array(1);
+  crypto.getRandomValues(randomBuffer);
+  const j = randomBuffer[0] % (i + 1);
+  [values[i], values[j]] = [values[j], values[i]];
+}
   const grid = document.getElementById('cardsGrid');
   const overlay = document.getElementById('cardsOverlay');
   const closeBtn = document.getElementById('cardsCloseBtn');
@@ -400,6 +409,7 @@ function openCards(){
   values.forEach(value=>{
     const card = document.createElement('button');
     card.className = 'chopao-card';
+    card.dataset.cardValue = String(value);
     card.innerHTML = `
       <div class="card-inner">
         <div class="card-face card-back">
@@ -415,6 +425,8 @@ function openCards(){
     card.onclick = ()=>{
       if(grid.classList.contains('picked')) return;
 
+      const pickedValue = Number(card.dataset.cardValue);
+
       grid.classList.add('picked');
       card.classList.add('flipped','selected-card');
 
@@ -424,7 +436,7 @@ function openCards(){
       });
 
       setTimeout(()=>{
-        eliminateWrongAnswers(value);
+        eliminateWrongAnswers(pickedValue);
         closeBtn.classList.remove('hidden');
       },650);
     };

@@ -10,3 +10,11 @@
 
 Ao RECOMEÇAR ou iniciar NOVO PARTICIPANTE, todos os auxílios são restaurados.
 As perguntas já usadas na sessão continuam bloqueadas.
+
+
+## V12.1 — correção das cartas
+O embaralhamento foi refeito com Fisher-Yates e `crypto.getRandomValues`.
+Em cada abertura existem obrigatoriamente quatro valores, exatamente uma vez cada:
+0, 1, 2 e 3.
+Apenas a posição das cartas muda aleatoriamente.
+O valor revelado é lido diretamente da carta clicada.
