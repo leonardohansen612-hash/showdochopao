@@ -1,15 +1,11 @@
-# Show do Chopão — V7 Autoescala
+# Show do Chopão — V8 Proporções corrigidas
 
-Nesta versão, o layout inteiro funciona como uma prancheta 16:9 de 1920x1080 e é reduzido automaticamente para caber em qualquer tela.
+Correções desta versão:
+- logo reduzida e limitada a 66% da área superior;
+- mais espaço entre logo e pergunta;
+- texugo bem maior;
+- escada levemente mais estreita;
+- mantém autoescala 1920x1080 sem cortar o conteúdo;
+- mantém os PNGs transparentes aprovados.
 
-## O que mudou
-- escala automática por largura e altura disponíveis;
-- mantém proporção 16:9;
-- evita cortar logo, escada, texugo e botões;
-- sem barra de rolagem;
-- ao redimensionar a janela ou mudar orientação, a escala se recalcula sozinha.
-
-## Observação
-Em telas que não sejam 16:9 podem aparecer pequenas faixas vazias nas laterais ou em cima/baixo. Isso é proposital para preservar todo o conteúdo sem cortar.
-
-Suba todos os arquivos deste ZIP no GitHub/Vercel.
+Suba todos os arquivos deste ZIP na raiz do GitHub/Vercel.
