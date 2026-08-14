@@ -1,11 +1,10 @@
-# Show do Chopão — V5
+# Show do Chopão — V6
 
-Correção focada no SITE:
-- layout refeito para impedir a logo de encostar/sobrepor a pergunta;
-- logo menor e centralizada em uma área própria;
-- texugo substituído pelo recorte limpo disponibilizado na conversa;
-- escada e texugo separados em colunas independentes;
-- proporções ajustadas para tela 16:9 / monitor widescreen;
-- mantém toda a lógica interativa da versão anterior.
+Esta versão usa EXATAMENTE os dois PNGs transparentes aprovados:
+- `assets/show-do-chopao-logo.png`
+- `assets/texugo-apresentador.png`
 
-Suba todos os arquivos do ZIP na raiz do GitHub/Vercel.
+Também foram removidos fundos, bordas e caixas CSS das imagens.
+As URLs receberam `?v=6` para evitar cache da versão antiga no Vercel/navegador.
+
+Suba TODO o conteúdo deste ZIP na raiz do repositório, incluindo a pasta `assets`.

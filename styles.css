@@ -48,15 +48,22 @@ button{font:inherit}
 .timer-ring strong{font-family:Anton,sans-serif;font-size:35px;line-height:1}
 .timer-ring small{font-size:9px;font-weight:900}
 .logo-stage{
- height:100%;min-width:0;display:flex;align-items:center;justify-content:center;
- padding:0 8%;
- overflow:hidden;
+ height:100%;min-width:0;
+ display:flex;align-items:center;justify-content:center;
+ padding:0 5%;
+ overflow:visible;
+ background:transparent;
 }
 .main-logo{
- display:block;width:auto;height:auto;max-width:78%;max-height:100%;object-fit:contain;
- border-radius:18px;
- box-shadow:0 0 0 10px rgba(3,5,45,.25);
- filter:drop-shadow(0 13px 18px rgba(0,0,0,.35));
+ display:block;
+ width:auto;height:auto;
+ max-width:82%;max-height:100%;
+ object-fit:contain;
+ background:transparent;
+ border:0;
+ border-radius:0;
+ box-shadow:none;
+ filter:drop-shadow(0 12px 16px rgba(0,0,0,.34));
 }
 
 /* QUESTION */
@@ -112,8 +119,10 @@ button{font:inherit}
 
 /* RIGHT */
 .right-zone{
- display:grid;grid-template-columns:minmax(340px,1.08fr) minmax(230px,.72fr);
- gap:20px;align-items:center
+ display:grid;
+ grid-template-columns:minmax(350px,1.12fr) minmax(260px,.78fr);
+ gap:24px;
+ align-items:center
 }
 .ladder-panel{
  width:100%;align-self:center;padding:14px 12px;
@@ -135,12 +144,25 @@ button{font:inherit}
 .ladder-item.current.jackpot{background:linear-gradient(#ffd94b,#eda00a);color:#211300;border-color:#fff0a1}
 
 .badger-wrap{
- height:76vh;align-self:end;display:flex;align-items:flex-end;justify-content:center;
- overflow:visible
+ height:78vh;
+ align-self:end;
+ display:flex;
+ align-items:flex-end;
+ justify-content:center;
+ overflow:visible;
+ background:transparent;
+ padding:0;
 }
 .badger{
- display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;
- filter:drop-shadow(0 16px 18px rgba(0,0,0,.42))
+ display:block;
+ width:auto;height:auto;
+ max-width:100%;max-height:100%;
+ object-fit:contain;
+ object-position:center bottom;
+ background:transparent;
+ border:0;
+ box-shadow:none;
+ filter:drop-shadow(0 15px 17px rgba(0,0,0,.38));
 }
 
 /* OVERLAY */
