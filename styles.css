@@ -1,4 +1,29 @@
 
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#02052a;
+}
+body{
+  position:relative;
+}
+.scale-root{
+  position:fixed;
+  left:50%;
+  top:50%;
+  transform-origin:center center;
+  will-change:transform;
+}
+.stage{
+  width:1920px !important;
+  height:1080px !important;
+  min-width:1920px !important;
+  min-height:1080px !important;
+}
+
+
 :root{
  --gold:#ffd238; --gold2:#f0a20b; --purple:#7d17e8; --red:#a80c0d;
 }
@@ -172,10 +197,4 @@ button{font:inherit}
 .overlay-icon{font-size:65px}.overlay-title{font-family:Anton,sans-serif;font-size:60px;color:#ffd43b}.overlay-sub{font-weight:900;margin:8px 0 20px}
 .overlay-card button{border:0;border-radius:10px;padding:12px 22px;background:#ffd33d;font-weight:900}
 
-@media(max-width:1250px){
- body{overflow:auto}
- .stage{height:auto;min-height:100vh;grid-template-columns:1fr}
- .left-zone{height:900px}
- .right-zone{height:700px;grid-template-columns:1fr 300px}
- .badger-wrap{height:650px}
-}
+

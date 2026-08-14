@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="scaleRoot" class="scale-root">
   <main class="stage">
     <div class="lights"></div>
 
@@ -81,6 +82,7 @@
       </div>
     </aside>
   </main>
+  </div>
 
   <div class="overlay hidden" id="overlay">
     <div class="overlay-card">
@@ -90,6 +92,29 @@
       <button id="continueBtn">CONTINUAR</button>
     </div>
   </div>
+
+
+  <script>
+    (function(){
+      const DESIGN_W = 1920;
+      const DESIGN_H = 1080;
+      const root = document.getElementById('scaleRoot');
+
+      function fitStage(){
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const scale = Math.min(vw / DESIGN_W, vh / DESIGN_H);
+
+        root.style.width = DESIGN_W + 'px';
+        root.style.height = DESIGN_H + 'px';
+        root.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      }
+
+      window.addEventListener('resize', fitStage, {passive:true});
+      window.addEventListener('orientationchange', fitStage, {passive:true});
+      fitStage();
+    })();
+  </script>
 
   <script src="script.js"></script>
 </body>

@@ -1,10 +1,15 @@
-# Show do Chopão — V6
+# Show do Chopão — V7 Autoescala
 
-Esta versão usa EXATAMENTE os dois PNGs transparentes aprovados:
-- `assets/show-do-chopao-logo.png`
-- `assets/texugo-apresentador.png`
+Nesta versão, o layout inteiro funciona como uma prancheta 16:9 de 1920x1080 e é reduzido automaticamente para caber em qualquer tela.
 
-Também foram removidos fundos, bordas e caixas CSS das imagens.
-As URLs receberam `?v=6` para evitar cache da versão antiga no Vercel/navegador.
+## O que mudou
+- escala automática por largura e altura disponíveis;
+- mantém proporção 16:9;
+- evita cortar logo, escada, texugo e botões;
+- sem barra de rolagem;
+- ao redimensionar a janela ou mudar orientação, a escala se recalcula sozinha.
 
-Suba TODO o conteúdo deste ZIP na raiz do repositório, incluindo a pasta `assets`.
+## Observação
+Em telas que não sejam 16:9 podem aparecer pequenas faixas vazias nas laterais ou em cima/baixo. Isso é proposital para preservar todo o conteúdo sem cortar.
+
+Suba todos os arquivos deste ZIP no GitHub/Vercel.
