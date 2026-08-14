@@ -1,37 +1,23 @@
-# Show do Chopão — V10 • Banco de 150 perguntas
+# Show do Chopão — V11
 
-## O que esta versão faz
-- 150 perguntas cadastradas.
-- 15 níveis de dificuldade.
-- Pergunta 1 sempre usa nível 1; pergunta 15 sempre usa nível 15.
-- Sorteio aleatório dentro de cada nível.
-- Nenhuma pergunta se repete dentro da mesma sessão/noite.
-- As quatro alternativas são embaralhadas a cada exibição.
-- Botão TROCA PERGUNTA busca outra questão inédita do mesmo nível.
-- Botão NOVO PARTICIPANTE volta à pergunta 1 sem liberar perguntas já usadas.
-- Botão NOVA SESSÃO libera o banco inteiro para um novo evento.
-- Funciona sem Supabase usando o banco local `questions.json`.
-- Quando configurado, usa Supabase para manter o histórico da sessão no banco.
+Baseada na V10 com banco de 150 perguntas.
 
-## Distribuição
-Nível 1: 20
-Nível 2: 18
-Nível 3: 16
-Nível 4: 14
-Nível 5: 12
-Níveis 6 e 7: 10 cada
-Níveis 8, 9 e 10: 8 cada
-Níveis 11 e 12: 6 cada
-Níveis 13 e 14: 5 cada
-Nível 15: 4
+## Mudanças
+- Removidos os botões ACERTAR e ERRAR.
+- Novo botão RESPONDER.
+- O participante seleciona uma das quatro alternativas e clica RESPONDER.
+- O sistema compara automaticamente a alternativa selecionada com a resposta correta.
+- Se acertar, marca a resposta em verde e exibe ACERTOU.
+- Se errar, marca a escolhida em vermelho, revela a correta em verde e encerra a rodada.
+- Se nenhuma alternativa estiver selecionada, RESPONDER pede para selecionar uma.
+- Novo botão RECOMEÇAR.
+- RECOMEÇAR inicia o jogo na pergunta 1 para um novo participante.
+- As perguntas já utilizadas na sessão continuam bloqueadas, portanto não se repetem.
+- NOVA SESSÃO continua sendo a opção para uma nova noite/evento e libera novamente o banco.
 
-Total: 150.
-
-## Supabase
-Arquivos prontos:
-- `supabase/01_schema.sql`
-- `supabase/02_seed_150_questions.sql`
-- `config.js`
-
-Depois de criar o projeto no Supabase, rode os dois SQLs nessa ordem e preencha `config.js` com URL + chave pública anon/publishable.
-Nunca use a chave `service_role` no site.
+Mantém:
+- 150 perguntas;
+- 15 níveis;
+- sorteio aleatório por dificuldade;
+- alternativas embaralhadas;
+- integração Supabase da V10.

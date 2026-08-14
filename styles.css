@@ -477,3 +477,14 @@ button{font:inherit}
   font-weight:900;
   white-space:nowrap;
 }
+
+.action.respond{
+  background:linear-gradient(#1bbb58,#057335);
+}
+.action.restart{
+  background:linear-gradient(#6d36dc,#38168e);
+}
+.action.respond:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}

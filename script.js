@@ -210,20 +210,55 @@ function showOverlay(kind){
   box.classList.remove('hidden');
 }
 
-document.getElementById('correctBtn').onclick=()=>{
+document.getElementById('respondBtn').onclick=()=>{
   if(!currentQuestion) return;
-  answers[currentQuestion.correctIndex].classList.add('correct');
-  showOverlay('correct');
-};
 
-document.getElementById('wrongBtn').onclick=()=>{
-  if(!currentQuestion) return;
-  if(selected!==null) answers[selected].classList.add('wrong');
-  answers[currentQuestion.correctIndex].classList.add('correct');
-  showOverlay('wrong');
+  if(selected === null){
+    alert('Selecione uma alternativa antes de responder.');
+    return;
+  }
+
+  clearInterval(timerId);
+
+  // Lock all alternatives after the answer is confirmed.
+  answers.forEach(a => a.disabled = true);
+
+  if(selected === currentQuestion.correctIndex){
+    answers[selected].classList.remove('selected');
+    answers[selected].classList.add('correct');
+    setTimeout(()=>showOverlay('correct'), 450);
+  }else{
+    answers[selected].classList.remove('selected');
+    answers[selected].classList.add('wrong');
+    answers[currentQuestion.correctIndex].classList.add('correct');
+    setTimeout(()=>showOverlay('wrong'), 650);
+  }
 };
 
 document.getElementById('stopBtn').onclick=()=>showOverlay('stop');
+
+document.getElementById('restartBtn').onclick=async()=>{
+  const ok = confirm('Recomeçar o jogo com um novo participante? As perguntas já usadas nesta sessão continuarão bloqueadas.');
+  if(!ok) return;
+
+  clearInterval(timerId);
+  document.getElementById('overlay').classList.add('hidden');
+
+  playerNo++;
+  localStorage.setItem('chopao_player_no', String(playerNo));
+
+  current = 0;
+  selected = null;
+  currentQuestion = null;
+  questionHistory = [];
+
+  answers.forEach(a=>{
+    a.disabled = false;
+    a.className = 'answer';
+  });
+
+  await loadQuestion(1);
+};
 
 document.getElementById('continueBtn').onclick=async()=>{
   document.getElementById('overlay').classList.add('hidden');
