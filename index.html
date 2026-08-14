@@ -52,9 +52,22 @@
 
       <section class="bottom-bar">
         <div class="helpers">
-          <button id="fiftyBtn"><b>👥</b><span>50/50</span></button>
-          <button id="swapBtn"><b>↻</b><span>TROCA<br>PERGUNTA</span></button>
-          <button id="pubBtn"><b>▥</b><span>PÚBLICO</span></button>
+          <button id="fiftyBtn" class="help-btn">
+            <b>50/50</b>
+            <span>1 USO</span>
+          </button>
+          <button id="swapBtn" class="help-btn">
+            <b>↻</b>
+            <span>TROCAR<br><small id="swapCount">2 USOS</small></span>
+          </button>
+          <button id="pubBtn" class="help-btn">
+            <b>▥</b>
+            <span>PÚBLICO<br><small>1 USO</small></span>
+          </button>
+          <button id="cardsBtn" class="help-btn">
+            <b>🂠</b>
+            <span>CARTAS<br><small>1 USO</small></span>
+          </button>
         </div>
 
         <div class="game-actions">
@@ -84,6 +97,16 @@
       </div>
     </aside>
   </main>
+
+
+  <div class="cards-overlay hidden" id="cardsOverlay">
+    <div class="cards-panel">
+      <div class="cards-title">CARTAS DO CHOPÃO</div>
+      <div class="cards-subtitle">Escolha uma carta</div>
+      <div class="cards-grid" id="cardsGrid"></div>
+      <button class="cards-close hidden" id="cardsCloseBtn">CONTINUAR</button>
+    </div>
+  </div>
 
   <div class="overlay hidden" id="overlay">
     <div class="overlay-card">

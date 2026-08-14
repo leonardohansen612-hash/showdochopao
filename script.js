@@ -12,6 +12,46 @@ let sessionId = localStorage.getItem('chopao_session_id') || null;
 let localBank = [];
 let localUsed = new Set(JSON.parse(localStorage.getItem('chopao_used_ids') || '[]'));
 
+let lifelines = {
+  fiftyUsed: false,
+  publicUsed: false,
+  swapUsed: 0,
+  cardsUsed: false
+};
+
+function resetLifelines(){
+  lifelines = { fiftyUsed:false, publicUsed:false, swapUsed:0, cardsUsed:false };
+  updateLifelineButtons();
+}
+
+function updateLifelineButtons(){
+  const fiftyBtn = document.getElementById('fiftyBtn');
+  const pubBtn = document.getElementById('pubBtn');
+  const swapBtn = document.getElementById('swapBtn');
+  const cardsBtn = document.getElementById('cardsBtn');
+  const swapCount = document.getElementById('swapCount');
+
+  if(fiftyBtn){
+    fiftyBtn.disabled = lifelines.fiftyUsed;
+    fiftyBtn.classList.toggle('used', lifelines.fiftyUsed);
+  }
+  if(pubBtn){
+    pubBtn.disabled = lifelines.publicUsed;
+    pubBtn.classList.toggle('used', lifelines.publicUsed);
+  }
+  if(cardsBtn){
+    cardsBtn.disabled = lifelines.cardsUsed;
+    cardsBtn.classList.toggle('used', lifelines.cardsUsed);
+  }
+  if(swapBtn){
+    const left = Math.max(0, 2 - lifelines.swapUsed);
+    swapBtn.disabled = left === 0;
+    swapBtn.classList.toggle('used', left === 0);
+    if(swapCount) swapCount.textContent = `${left} ${left === 1 ? 'USO' : 'USOS'}`;
+  }
+}
+
+
 const cfg = window.SHOW_DO_CHOPAO_CONFIG || {};
 const hasSupabaseConfig = Boolean(cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY);
 const supabaseClient = hasSupabaseConfig
@@ -251,6 +291,7 @@ document.getElementById('restartBtn').onclick=async()=>{
   selected = null;
   currentQuestion = null;
   questionHistory = [];
+  resetLifelines();
 
   answers.forEach(a=>{
     a.disabled = false;
@@ -296,21 +337,108 @@ document.getElementById('prevBtn').onclick=()=>{
   resetTimer();
 };
 
+
 document.getElementById('fiftyBtn').onclick=()=>{
-  if(!currentQuestion) return;
+  if(!currentQuestion || lifelines.fiftyUsed) return;
+
+  lifelines.fiftyUsed = true;
+  updateLifelineButtons();
+
   const wrong=[0,1,2,3]
     .filter(i=>i!==currentQuestion.correctIndex)
     .sort(()=>Math.random()-.5)
     .slice(0,2);
+
   wrong.forEach(i=>answers[i].classList.add('disabled'));
 };
 
 document.getElementById('swapBtn').onclick=async()=>{
+  if(lifelines.swapUsed >= 2) return;
+
+  lifelines.swapUsed++;
+  updateLifelineButtons();
   await loadQuestion(current+1);
 };
 
 document.getElementById('pubBtn').onclick=()=>{
-  alert('Ajuda do público: podemos implementar a votação real em uma próxima etapa.');
+  if(lifelines.publicUsed) return;
+
+  lifelines.publicUsed = true;
+  updateLifelineButtons();
+
+  alert('AJUDA DO PÚBLICO! A plateia pode levantar as plaquinhas com as alternativas.');
+};
+
+function eliminateWrongAnswers(count){
+  if(!currentQuestion || count <= 0) return;
+
+  const candidates = [0,1,2,3]
+    .filter(i => i !== currentQuestion.correctIndex)
+    .filter(i => !answers[i].classList.contains('disabled'));
+
+  candidates
+    .sort(()=>Math.random()-.5)
+    .slice(0, Math.min(count, candidates.length))
+    .forEach(i => answers[i].classList.add('disabled'));
+}
+
+function openCards(){
+  if(lifelines.cardsUsed || !currentQuestion) return;
+
+  lifelines.cardsUsed = true;
+  updateLifelineButtons();
+
+  const values = [0,1,2,3].sort(()=>Math.random()-.5);
+  const grid = document.getElementById('cardsGrid');
+  const overlay = document.getElementById('cardsOverlay');
+  const closeBtn = document.getElementById('cardsCloseBtn');
+
+  grid.innerHTML = '';
+  grid.classList.remove('picked');
+  closeBtn.classList.add('hidden');
+
+  values.forEach(value=>{
+    const card = document.createElement('button');
+    card.className = 'chopao-card';
+    card.innerHTML = `
+      <div class="card-inner">
+        <div class="card-face card-back">
+          <img src="assets/show-do-chopao-logo.png?v=6" alt="Show do Chopão">
+        </div>
+        <div class="card-face card-front">
+          <strong>${value}</strong>
+          <span>${value === 1 ? 'RESPOSTA ERRADA ELIMINADA' : 'RESPOSTAS ERRADAS ELIMINADAS'}</span>
+        </div>
+      </div>
+    `;
+
+    card.onclick = ()=>{
+      if(grid.classList.contains('picked')) return;
+
+      grid.classList.add('picked');
+      card.classList.add('flipped','selected-card');
+
+      [...grid.querySelectorAll('.chopao-card')].forEach(other=>{
+        other.disabled = true;
+        if(other !== card) other.classList.add('not-selected');
+      });
+
+      setTimeout(()=>{
+        eliminateWrongAnswers(value);
+        closeBtn.classList.remove('hidden');
+      },650);
+    };
+
+    grid.appendChild(card);
+  });
+
+  overlay.classList.remove('hidden');
+}
+
+document.getElementById('cardsBtn').onclick = openCards;
+
+document.getElementById('cardsCloseBtn').onclick = ()=>{
+  document.getElementById('cardsOverlay').classList.add('hidden');
 };
 
 document.getElementById('newPlayerBtn').onclick=async()=>{
@@ -319,6 +447,7 @@ document.getElementById('newPlayerBtn').onclick=async()=>{
   localStorage.setItem('chopao_player_no',String(playerNo));
   current=0;
   questionHistory=[];
+  resetLifelines();
   await loadQuestion(1);
 };
 
@@ -336,11 +465,13 @@ document.getElementById('newSessionBtn').onclick=async()=>{
   await ensureSession();
   current=0;
   questionHistory=[];
+  resetLifelines();
   await loadQuestion(1);
 };
 
 (async function init(){
   try{
+    resetLifelines();
     if(supabaseClient){
       setStatus('CONECTANDO SUPABASE...');
       await ensureSession();

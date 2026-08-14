@@ -1,23 +1,12 @@
-# Show do Chopão — V11
+# Show do Chopão — V12 • Auxílios por jogador
 
-Baseada na V10 com banco de 150 perguntas.
+- 50/50: 1 uso por jogador.
+- Público: 1 uso por jogador; apenas sinaliza para a plateia levantar as plaquinhas.
+- Trocar pergunta: 2 usos por jogador.
+- Cartas: 1 uso por jogador.
+  - As 4 cartas têm a logo do Show do Chopão no verso.
+  - Os valores 0, 1, 2 e 3 são embaralhados aleatoriamente.
+  - A carta escolhida vira e elimina automaticamente a quantidade correspondente de respostas erradas.
 
-## Mudanças
-- Removidos os botões ACERTAR e ERRAR.
-- Novo botão RESPONDER.
-- O participante seleciona uma das quatro alternativas e clica RESPONDER.
-- O sistema compara automaticamente a alternativa selecionada com a resposta correta.
-- Se acertar, marca a resposta em verde e exibe ACERTOU.
-- Se errar, marca a escolhida em vermelho, revela a correta em verde e encerra a rodada.
-- Se nenhuma alternativa estiver selecionada, RESPONDER pede para selecionar uma.
-- Novo botão RECOMEÇAR.
-- RECOMEÇAR inicia o jogo na pergunta 1 para um novo participante.
-- As perguntas já utilizadas na sessão continuam bloqueadas, portanto não se repetem.
-- NOVA SESSÃO continua sendo a opção para uma nova noite/evento e libera novamente o banco.
-
-Mantém:
-- 150 perguntas;
-- 15 níveis;
-- sorteio aleatório por dificuldade;
-- alternativas embaralhadas;
-- integração Supabase da V10.
+Ao RECOMEÇAR ou iniciar NOVO PARTICIPANTE, todos os auxílios são restaurados.
+As perguntas já usadas na sessão continuam bloqueadas.
