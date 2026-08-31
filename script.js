@@ -15,6 +15,7 @@ let localBank = [];
 let localUsed = new Set(JSON.parse(localStorage.getItem('chopao_used_ids') || '[]'));
 let appReady = false;
 let gameStarted = false;
+let overlayAction = 'continue';
 
 let lifelines = {
   fiftyUsed: false,
@@ -388,25 +389,38 @@ function showOverlay(kind){
   const title=document.getElementById('overlayTitle');
   const sub=document.getElementById('overlaySub');
   const icon=document.getElementById('overlayIcon');
+  const continueBtn=document.getElementById('continueBtn');
 
   if(kind==='correct'){
-    title.textContent=current===14?'GANHOU O CHOPÃO!':'ACERTOU!';
-    sub.textContent=current===14
-      ? `${brl(prizes[current])} conquistados! 🍺🏆`
-      : `Você segue no jogo. A próxima vale ${brl(prizes[current+1])}.`;
-    icon.textContent=current===14?'🏆🍺':'🍺';
+    if(current===14){
+      title.textContent='GANHOU O CHOPÃO!';
+      sub.textContent=`${brl(prizes[current])} conquistados! 🍺🏆`;
+      icon.textContent='🏆🍺';
+      overlayAction='restart';
+      continueBtn.textContent='NOVO PARTICIPANTE';
+    }else{
+      title.textContent='ACERTOU!';
+      sub.textContent=`Você segue no jogo. A próxima vale ${brl(prizes[current+1])}.`;
+      icon.textContent='🍺';
+      overlayAction='continue';
+      continueBtn.textContent='CONTINUAR';
+    }
   }else if(kind==='wrong'){
     title.textContent='ERROU!';
     sub.textContent=wrongPrizes[current] > 0
       ? `Você encerrou com ${brl(wrongPrizes[current])}.`
       : 'Você encerrou sem prêmio nesta rodada.';
     icon.textContent='❌';
+    overlayAction='restart';
+    continueBtn.textContent='NOVO PARTICIPANTE';
   }else{
     title.textContent='PAROU!';
     sub.textContent=stopPrizes[current] > 0
       ? `Você encerrou com ${brl(stopPrizes[current])}.`
-      : 'Você decidiu parar antes de conquistar um prêmio.';
+      : 'Você decidiu parar sem prêmio nesta rodada.';
     icon.textContent='💰';
+    overlayAction='restart';
+    continueBtn.textContent='NOVO PARTICIPANTE';
   }
   box.classList.remove('hidden');
 }
@@ -444,9 +458,11 @@ document.getElementById('stopBtn').onclick=()=>{
   if(confirm(msg)) showOverlay('stop');
 };
 
-document.getElementById('restartBtn').onclick=async()=>{
-  const ok = confirm('Recomeçar o jogo com um novo participante? As perguntas já usadas nesta sessão continuarão bloqueadas.');
-  if(!ok) return;
+async function startNewParticipant(withConfirm=true){
+  if(withConfirm){
+    const ok = confirm('Recomeçar o jogo com um novo participante? As perguntas já usadas nesta sessão continuarão bloqueadas.');
+    if(!ok) return;
+  }
 
   clearInterval(timerId);
   document.getElementById('overlay').classList.add('hidden');
@@ -458,6 +474,7 @@ document.getElementById('restartBtn').onclick=async()=>{
   selected = null;
   currentQuestion = null;
   questionHistory = [];
+  overlayAction = 'continue';
   resetLifelines();
 
   answers.forEach(a=>{
@@ -466,15 +483,22 @@ document.getElementById('restartBtn').onclick=async()=>{
   });
 
   await loadQuestion(1,true,true);
+}
+
+document.getElementById('restartBtn').onclick=async()=>{
+  await startNewParticipant(true);
 };
 
 document.getElementById('continueBtn').onclick=async()=>{
+  if(overlayAction==='restart'){
+    await startNewParticipant(false);
+    return;
+  }
+
   document.getElementById('overlay').classList.add('hidden');
   if(current<14){
     current++;
     await loadQuestion(current+1,true,true);
-  }else{
-    resetTimer();
   }
 };
 
