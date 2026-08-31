@@ -37,3 +37,9 @@ O valor revelado é lido diretamente da carta clicada.
 
 ## V12.4 - audio embutido
 Os dois audios MP3 foram incorporados diretamente no index.html como data URLs, eliminando dependencia de servir arquivos .mp3 pelo /assets na Vercel.
+
+
+V12.16: frames embutidos divididos em múltiplos JS com ~8 MB cada para upload pelo GitHub web sem exceder 25 MB por arquivo.
+
+
+V12.17: frames embutidos divididos em arquivos JS de aproximadamente 1,5 MB cada para máxima compatibilidade com upload web do GitHub.
