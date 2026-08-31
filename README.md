@@ -18,3 +18,10 @@ Em cada abertura existem obrigatoriamente quatro valores, exatamente uma vez cad
 0, 1, 2 e 3.
 Apenas a posição das cartas muda aleatoriamente.
 O valor revelado é lido diretamente da carta clicada.
+
+## V12.2 — Abertura e vinhetas de perguntas
+- Nova tela inicial com botão **INICIAR O JOGO**.
+- Na primeira inicialização do jogo, exibe o Texuguinho apresentador com luzes animadas e toca a abertura completa.
+- A primeira pergunta só aparece quando o áudio de abertura termina.
+- Todas as trocas de pergunta posteriores tocam a vinheta curta, incluindo avanço normal, Trocar Pergunta, Novo Participante, Recomeçar e Nova Sessão.
+- A abertura completa não se repete durante a mesma execução da página.

@@ -11,6 +11,8 @@ let playerNo = Number(localStorage.getItem('chopao_player_no') || 1);
 let sessionId = localStorage.getItem('chopao_session_id') || null;
 let localBank = [];
 let localUsed = new Set(JSON.parse(localStorage.getItem('chopao_used_ids') || '[]'));
+let appReady = false;
+let gameStarted = false;
 
 let lifelines = {
   fiftyUsed: false,
@@ -65,6 +67,59 @@ const answers = [...document.querySelectorAll('.answer')];
 const ladder = document.getElementById('ladder');
 const timerEl = document.getElementById('timer');
 const dbStatus = document.getElementById('dbStatus');
+const startScreen = document.getElementById('startScreen');
+const startGameBtn = document.getElementById('startGameBtn');
+const startStatus = document.getElementById('startStatus');
+const openingScreen = document.getElementById('openingScreen');
+const questionTransition = document.getElementById('questionTransition');
+const openingAudio = document.getElementById('openingAudio');
+const questionAudio = document.getElementById('questionAudio');
+
+function waitForAudio(audio){
+  return new Promise(resolve=>{
+    let finished=false;
+    const done=()=>{
+      if(finished) return;
+      finished=true;
+      audio.removeEventListener('ended',done);
+      audio.removeEventListener('error',done);
+      resolve();
+    };
+    audio.pause();
+    audio.currentTime=0;
+    audio.addEventListener('ended',done,{once:true});
+    audio.addEventListener('error',done,{once:true});
+    const playPromise=audio.play();
+    if(playPromise && typeof playPromise.catch==='function'){
+      playPromise.catch(()=>done());
+    }
+  });
+}
+
+async function playQuestionTransition(){
+  questionTransition.classList.remove('hidden');
+  await waitForAudio(questionAudio);
+  questionTransition.classList.add('fade-out');
+  await new Promise(resolve=>setTimeout(resolve,260));
+  questionTransition.classList.add('hidden');
+  questionTransition.classList.remove('fade-out');
+}
+
+async function startGameForFirstTime(){
+  if(!appReady || gameStarted) return;
+  gameStarted=true;
+  startGameBtn.disabled=true;
+  startScreen.classList.add('hidden');
+  openingScreen.classList.remove('hidden');
+  await waitForAudio(openingAudio);
+  openingScreen.classList.add('opening-finish');
+  await new Promise(resolve=>setTimeout(resolve,500));
+  openingScreen.classList.add('hidden');
+  openingScreen.classList.remove('opening-finish');
+  await loadQuestion(1,true,false);
+}
+
+startGameBtn.addEventListener('click',startGameForFirstTime);
 
 function brl(v){
   return `R$ ${v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
@@ -190,9 +245,11 @@ function normalizeQuestion(q){
   };
 }
 
-async function loadQuestion(level=current+1, pushHistory=true){
+async function loadQuestion(level=current+1, pushHistory=true, withTransition=false){
   try{
+    clearInterval(timerId);
     answers.forEach(a=>{a.disabled=true; a.className='answer';});
+    if(withTransition) await playQuestionTransition();
     questionText.textContent='SORTEANDO PERGUNTA...';
     const q=normalizeQuestion(await getUnusedQuestion(level));
     currentQuestion=q;
@@ -298,14 +355,14 @@ document.getElementById('restartBtn').onclick=async()=>{
     a.className = 'answer';
   });
 
-  await loadQuestion(1);
+  await loadQuestion(1,true,true);
 };
 
 document.getElementById('continueBtn').onclick=async()=>{
   document.getElementById('overlay').classList.add('hidden');
   if(current<14){
     current++;
-    await loadQuestion(current+1);
+    await loadQuestion(current+1,true,true);
   }else{
     resetTimer();
   }
@@ -314,7 +371,7 @@ document.getElementById('continueBtn').onclick=async()=>{
 document.getElementById('nextBtn').onclick=async()=>{
   if(current<14){
     current++;
-    await loadQuestion(current+1);
+    await loadQuestion(current+1,true,true);
   }
 };
 
@@ -357,7 +414,7 @@ document.getElementById('swapBtn').onclick=async()=>{
 
   lifelines.swapUsed++;
   updateLifelineButtons();
-  await loadQuestion(current+1);
+  await loadQuestion(current+1,true,true);
 };
 
 document.getElementById('pubBtn').onclick=()=>{
@@ -460,7 +517,7 @@ document.getElementById('newPlayerBtn').onclick=async()=>{
   current=0;
   questionHistory=[];
   resetLifelines();
-  await loadQuestion(1);
+  await loadQuestion(1,true,true);
 };
 
 document.getElementById('newSessionBtn').onclick=async()=>{
@@ -478,7 +535,7 @@ document.getElementById('newSessionBtn').onclick=async()=>{
   current=0;
   questionHistory=[];
   resetLifelines();
-  await loadQuestion(1);
+  await loadQuestion(1,true,true);
 };
 
 (async function init(){
@@ -493,7 +550,10 @@ document.getElementById('newSessionBtn').onclick=async()=>{
       await ensureSession();
       setStatus('BANCO LOCAL • 150 PERGUNTAS');
     }
-    await loadQuestion(1);
+    appReady = true;
+    startGameBtn.disabled = false;
+    startGameBtn.textContent = 'INICIAR O JOGO';
+    startStatus.textContent = 'ABERTURA PRONTA';
   }catch(err){
     console.error(err);
     setStatus('ERRO NO BANCO');

@@ -98,6 +98,28 @@
     </aside>
   </main>
 
+  <div class="start-screen" id="startScreen">
+    <div class="start-glow start-glow-a"></div>
+    <div class="start-glow start-glow-b"></div>
+    <img src="assets/show-do-chopao-logo.png?v=7" alt="Show do Chopão" class="start-logo">
+    <button id="startGameBtn" class="start-game-btn" disabled>CARREGANDO...</button>
+    <small id="startStatus">PREPARANDO O BANCO DE PERGUNTAS</small>
+  </div>
+
+  <div class="opening-screen hidden" id="openingScreen">
+    <div class="opening-lights"></div>
+    <div class="opening-beams"></div>
+    <img src="assets/texugo-apresentador.png?v=7" alt="Texuguinho apresentador" class="opening-badger">
+  </div>
+
+  <div class="question-transition hidden" id="questionTransition">
+    <div class="transition-pulse"></div>
+    <img src="assets/show-do-chopao-logo.png?v=7" alt="Show do Chopão">
+    <strong>PRÓXIMA PERGUNTA</strong>
+  </div>
+
+  <audio id="openingAudio" preload="auto" src="assets/silvio-santos-abertura-show-do-milhao.mp3"></audio>
+  <audio id="questionAudio" preload="auto" src="assets/perguntashowdomilhao_1.mp3"></audio>
 
   <div class="cards-overlay hidden" id="cardsOverlay">
     <div class="cards-panel">
