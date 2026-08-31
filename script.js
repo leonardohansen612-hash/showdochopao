@@ -82,6 +82,8 @@ let openingBadgerRunning = false;
 function drawOpeningBadgerFrame(){
   if(!openingBadgerRunning || !openingBadgerVideo || !openingBadgerCanvas) return;
   const ctx = openingBadgerCanvas.getContext('2d', {willReadFrequently:true, alpha:true});
+  ctx.imageSmoothingEnabled=true;
+  ctx.imageSmoothingQuality='high';
   const w = openingBadgerCanvas.width, h = openingBadgerCanvas.height;
   if(openingBadgerVideo.readyState >= 2){
     // Draw current source frame into a temporary canvas so the visible canvas
