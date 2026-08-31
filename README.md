@@ -43,3 +43,6 @@ V12.16: frames embutidos divididos em múltiplos JS com ~8 MB cada para upload p
 
 
 V12.17: frames embutidos divididos em arquivos JS de aproximadamente 1,5 MB cada para máxima compatibilidade com upload web do GitHub.
+
+
+V12.18: corrigido index.html para carregar os 32 arquivos de frames em ordem antes do script.js.
