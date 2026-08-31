@@ -25,3 +25,11 @@ O valor revelado é lido diretamente da carta clicada.
 - A primeira pergunta só aparece quando o áudio de abertura termina.
 - Todas as trocas de pergunta posteriores tocam a vinheta curta, incluindo avanço normal, Trocar Pergunta, Novo Participante, Recomeçar e Nova Sessão.
 - A abertura completa não se repete durante a mesma execução da página.
+
+
+## V12.3 — correção de áudio
+- Carregamento explícito dos MP3 antes da reprodução.
+- Reprodução vinculada ao clique em INICIAR O JOGO.
+- Volume e mute normalizados.
+- Mensagem de diagnóstico quando o navegador bloquear ou não carregar o áudio.
+- Cache-busting nos arquivos de áudio.

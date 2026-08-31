@@ -75,30 +75,100 @@ const questionTransition = document.getElementById('questionTransition');
 const openingAudio = document.getElementById('openingAudio');
 const questionAudio = document.getElementById('questionAudio');
 
-function waitForAudio(audio){
-  return new Promise(resolve=>{
-    let finished=false;
-    const done=()=>{
-      if(finished) return;
-      finished=true;
-      audio.removeEventListener('ended',done);
-      audio.removeEventListener('error',done);
+function prepareAudio(audio){
+  if(!audio) throw new Error('Elemento de áudio não encontrado.');
+  audio.muted = false;
+  audio.volume = 1;
+  audio.preload = 'auto';
+  audio.load();
+}
+
+function waitForAudioReady(audio, timeoutMs=8000){
+  return new Promise((resolve,reject)=>{
+    if(audio.readyState >= 2) return resolve();
+
+    let settled=false;
+    const cleanup=()=>{
+      clearTimeout(timeout);
+      audio.removeEventListener('canplay',onReady);
+      audio.removeEventListener('loadeddata',onReady);
+      audio.removeEventListener('error',onError);
+    };
+    const onReady=()=>{
+      if(settled) return;
+      settled=true;
+      cleanup();
       resolve();
     };
-    audio.pause();
-    audio.currentTime=0;
-    audio.addEventListener('ended',done,{once:true});
-    audio.addEventListener('error',done,{once:true});
-    const playPromise=audio.play();
-    if(playPromise && typeof playPromise.catch==='function'){
-      playPromise.catch(()=>done());
-    }
+    const onError=()=>{
+      if(settled) return;
+      settled=true;
+      cleanup();
+      reject(new Error(`Não foi possível carregar ${audio.currentSrc || audio.src}.`));
+    };
+    const timeout=setTimeout(()=>{
+      if(settled) return;
+      settled=true;
+      cleanup();
+      reject(new Error(`O áudio demorou demais para carregar: ${audio.currentSrc || audio.src}.`));
+    },timeoutMs);
+
+    audio.addEventListener('canplay',onReady,{once:true});
+    audio.addEventListener('loadeddata',onReady,{once:true});
+    audio.addEventListener('error',onError,{once:true});
+  });
+}
+
+async function playAudioToEnd(audio){
+  prepareAudio(audio);
+  await waitForAudioReady(audio);
+  audio.pause();
+  audio.currentTime=0;
+  audio.muted=false;
+  audio.volume=1;
+
+  await audio.play();
+
+  return new Promise((resolve,reject)=>{
+    let settled=false;
+    const cleanup=()=>{
+      clearTimeout(safetyTimeout);
+      audio.removeEventListener('ended',onEnded);
+      audio.removeEventListener('error',onError);
+    };
+    const onEnded=()=>{
+      if(settled) return;
+      settled=true;
+      cleanup();
+      resolve();
+    };
+    const onError=()=>{
+      if(settled) return;
+      settled=true;
+      cleanup();
+      reject(new Error(`Falha durante a reprodução de ${audio.currentSrc || audio.src}.`));
+    };
+    const expected = Number.isFinite(audio.duration) ? audio.duration * 1000 : 60000;
+    const safetyTimeout=setTimeout(()=>{
+      if(settled) return;
+      settled=true;
+      cleanup();
+      reject(new Error('A reprodução do áudio não foi concluída.'));
+    },Math.max(expected+5000,10000));
+
+    audio.addEventListener('ended',onEnded,{once:true});
+    audio.addEventListener('error',onError,{once:true});
   });
 }
 
 async function playQuestionTransition(){
   questionTransition.classList.remove('hidden');
-  await waitForAudio(questionAudio);
+  try{
+    await playAudioToEnd(questionAudio);
+  }catch(err){
+    console.error('Erro na vinheta de pergunta:',err);
+    alert('A vinheta não pôde ser reproduzida. Detalhe: '+(err.message||err));
+  }
   questionTransition.classList.add('fade-out');
   await new Promise(resolve=>setTimeout(resolve,260));
   questionTransition.classList.add('hidden');
@@ -111,7 +181,20 @@ async function startGameForFirstTime(){
   startGameBtn.disabled=true;
   startScreen.classList.add('hidden');
   openingScreen.classList.remove('hidden');
-  await waitForAudio(openingAudio);
+
+  try{
+    await playAudioToEnd(openingAudio);
+  }catch(err){
+    console.error('Erro no áudio de abertura:',err);
+    openingScreen.classList.add('hidden');
+    startScreen.classList.remove('hidden');
+    startGameBtn.disabled=false;
+    gameStarted=false;
+    startStatus.textContent='ERRO AO TOCAR O ÁUDIO';
+    alert('O navegador não conseguiu tocar a abertura. Clique novamente em INICIAR O JOGO. Detalhe: '+(err.message||err));
+    return;
+  }
+
   openingScreen.classList.add('opening-finish');
   await new Promise(resolve=>setTimeout(resolve,500));
   openingScreen.classList.add('hidden');
