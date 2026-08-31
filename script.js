@@ -1,5 +1,7 @@
 
-const prizes = [10,20,30,40,50,60,70,80,90,100,150,200,250,300,500];
+const prizes = [1,2,4,6,8,10,15,20,25,50,70,90,150,200,300];
+const stopPrizes = [0,1,2,4,6,10,10,10,10,10,20,20,20,20,100];
+const wrongPrizes = [0,0,0,0,0,5,5,5,5,5,10,10,10,10,0];
 
 let current = 0;
 let selected = null;
@@ -331,6 +333,17 @@ function normalizeQuestion(q){
   };
 }
 
+function updateRiskValues(){
+  const wrongEl=document.getElementById('wrongValue');
+  const stopEl=document.getElementById('stopValue');
+  const correctEl=document.getElementById('correctValue');
+  if(wrongEl) wrongEl.textContent=brl(wrongPrizes[current]);
+  if(stopEl) stopEl.textContent=brl(stopPrizes[current]);
+  if(correctEl) correctEl.textContent=brl(prizes[current]);
+  const stopBtn=document.getElementById('stopBtn');
+  if(stopBtn) stopBtn.querySelector('span').textContent=`PARAR • ${brl(stopPrizes[current])}`;
+}
+
 async function loadQuestion(level=current+1, pushHistory=true, withTransition=false){
   try{
     clearInterval(timerId);
@@ -344,6 +357,7 @@ async function loadQuestion(level=current+1, pushHistory=true, withTransition=fa
 
     qNumber.textContent=String(current+1).padStart(2,'0');
     currentPrize.textContent=brl(prizes[current]);
+    updateRiskValues();
     questionText.textContent=q.prompt;
     answers.forEach((btn,i)=>{
       btn.disabled=false;
@@ -378,16 +392,20 @@ function showOverlay(kind){
   if(kind==='correct'){
     title.textContent=current===14?'GANHOU O CHOPÃO!':'ACERTOU!';
     sub.textContent=current===14
-      ? 'R$ 500,00 conquistados! 🍺🏆'
+      ? `${brl(prizes[current])} conquistados! 🍺🏆`
       : `Você segue no jogo. A próxima vale ${brl(prizes[current+1])}.`;
     icon.textContent=current===14?'🏆🍺':'🍺';
   }else if(kind==='wrong'){
     title.textContent='ERROU!';
-    sub.textContent='Fim de jogo. Clique em NOVO PARTICIPANTE para começar outra rodada.';
+    sub.textContent=wrongPrizes[current] > 0
+      ? `Você encerrou com ${brl(wrongPrizes[current])}.`
+      : 'Você encerrou sem prêmio nesta rodada.';
     icon.textContent='❌';
   }else{
     title.textContent='PAROU!';
-    sub.textContent=`Você encerrou com ${brl(prizes[current])}.`;
+    sub.textContent=stopPrizes[current] > 0
+      ? `Você encerrou com ${brl(stopPrizes[current])}.`
+      : 'Você decidiu parar antes de conquistar um prêmio.';
     icon.textContent='💰';
   }
   box.classList.remove('hidden');
@@ -418,7 +436,13 @@ document.getElementById('respondBtn').onclick=()=>{
   }
 };
 
-document.getElementById('stopBtn').onclick=()=>showOverlay('stop');
+document.getElementById('stopBtn').onclick=()=>{
+  const value=stopPrizes[current];
+  const msg=value>0
+    ? `Tem certeza que deseja parar e levar ${brl(value)}?`
+    : 'Tem certeza que deseja parar? Nesta pergunta o valor de PARAR é R$ 0,00.';
+  if(confirm(msg)) showOverlay('stop');
+};
 
 document.getElementById('restartBtn').onclick=async()=>{
   const ok = confirm('Recomeçar o jogo com um novo participante? As perguntas já usadas nesta sessão continuarão bloqueadas.');
@@ -470,6 +494,7 @@ document.getElementById('prevBtn').onclick=()=>{
   selected=null;
   qNumber.textContent=String(current+1).padStart(2,'0');
   currentPrize.textContent=brl(prizes[current]);
+  updateRiskValues();
   questionText.textContent=currentQuestion.prompt;
   answers.forEach((btn,i)=>{
     btn.disabled=false;

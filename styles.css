@@ -810,3 +810,8 @@ button{font:inherit}
 .opening-badger-stage{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;height:min(86vh,900px);max-width:76vw;animation:hostEntrance 1.2s cubic-bezier(.2,.8,.2,1) both,hostFloat 2s 1.2s ease-in-out infinite alternate}
 .opening-badger-stage .opening-badger{position:relative;z-index:4;height:100%;width:auto;max-width:76vw;object-fit:contain;filter:drop-shadow(0 24px 25px rgba(0,0,0,.55));animation:none}
 .opening-badger-source{position:absolute!important;width:2px!important;height:2px!important;opacity:.001!important;pointer-events:none!important;left:-9999px!important;top:-9999px!important}
+
+/* V12.19 — valores de risco da rodada */
+.risk-values{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:8px 0 12px;font-weight:800;font-size:clamp(12px,1.15vw,17px)}
+.risk-values span{padding:7px 12px;border-radius:999px;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.18)}
+.risk-wrong b{color:#ff8d8d}.risk-stop b{color:#ffd56a}.risk-correct b{color:#8ff0a4}
