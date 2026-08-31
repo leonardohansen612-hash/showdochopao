@@ -73,6 +73,88 @@ const startStatus = document.getElementById('startStatus');
 const openingScreen = document.getElementById('openingScreen');
 const questionTransition = document.getElementById('questionTransition');
 const openingAudio = document.getElementById('openingAudio');
+const openingBadgerVideo = document.getElementById('openingBadgerVideo');
+const openingBadgerCanvas = document.getElementById('openingBadgerCanvas');
+let openingBadgerFrameHandle = null;
+let openingBadgerRunning = false;
+
+
+function drawOpeningBadgerFrame(){
+  if(!openingBadgerRunning || !openingBadgerVideo || !openingBadgerCanvas) return;
+  const ctx = openingBadgerCanvas.getContext('2d', {willReadFrequently:true, alpha:true});
+  const w = openingBadgerCanvas.width, h = openingBadgerCanvas.height;
+  if(openingBadgerVideo.readyState >= 2){
+    // Draw current source frame into a temporary canvas so the visible canvas
+    // is replaced atomically and can never accumulate previous poses.
+    if(!drawOpeningBadgerFrame.buffer){
+      const b=document.createElement('canvas'); b.width=w; b.height=h;
+      drawOpeningBadgerFrame.buffer=b;
+      drawOpeningBadgerFrame.bctx=b.getContext('2d',{willReadFrequently:true,alpha:true});
+    }
+    const bctx=drawOpeningBadgerFrame.bctx;
+    bctx.clearRect(0,0,w,h);
+    bctx.drawImage(openingBadgerVideo,0,0,w,h);
+    const frame=bctx.getImageData(0,0,w,h);
+    const d=frame.data;
+    for(let i=0;i<d.length;i+=4){
+      const r=d[i], g=d[i+1], b=d[i+2];
+      const rb=Math.max(r,b);
+      const dominance=g-rb;
+      // Key only genuinely green pixels; retain dark fur/suit detail.
+      if(g>72 && dominance>18 && g>r*1.18 && g>b*1.18){
+        if(dominance>82){ d[i+3]=0; }
+        else {
+          const a=Math.max(0,Math.min(255, Math.round(255*(82-dominance)/64)));
+          d[i+3]=a;
+          if(a>0) d[i+1]=Math.min(g, Math.round(rb*1.08));
+        }
+      } else d[i+3]=255;
+    }
+    bctx.putImageData(frame,0,0);
+    // Critical: clear the full visible bitmap before each new frame.
+    ctx.save();
+    ctx.globalCompositeOperation='copy';
+    ctx.clearRect(0,0,w,h);
+    ctx.drawImage(drawOpeningBadgerFrame.buffer,0,0,w,h);
+    ctx.restore();
+  }
+  if(openingBadgerVideo.requestVideoFrameCallback){
+    openingBadgerFrameHandle=openingBadgerVideo.requestVideoFrameCallback(()=>drawOpeningBadgerFrame());
+  } else {
+    openingBadgerFrameHandle=requestAnimationFrame(drawOpeningBadgerFrame);
+  }
+}
+
+function startOpeningBadger(){
+  if(!openingBadgerVideo || !openingBadgerCanvas) return;
+  stopOpeningBadger();
+  openingBadgerRunning=true;
+  openingBadgerVideo.muted=true;
+  openingBadgerVideo.volume=0;
+  openingBadgerVideo.loop=true;
+  try{ openingBadgerVideo.currentTime=0; }catch(e){}
+  const p=openingBadgerVideo.play();
+  if(p && p.catch) p.catch(err=>console.warn('Texuguinho video:',err));
+  drawOpeningBadgerFrame();
+}
+
+function stopOpeningBadger(){
+  openingBadgerRunning=false;
+  if(openingBadgerVideo){
+    if(openingBadgerVideo.cancelVideoFrameCallback && openingBadgerFrameHandle!=null){
+      try{ openingBadgerVideo.cancelVideoFrameCallback(openingBadgerFrameHandle); }catch(e){}
+    } else if(openingBadgerFrameHandle!=null){
+      cancelAnimationFrame(openingBadgerFrameHandle);
+    }
+    openingBadgerFrameHandle=null;
+    openingBadgerVideo.pause();
+  }
+  if(openingBadgerCanvas){
+    const c=openingBadgerCanvas.getContext('2d');
+    c.clearRect(0,0,openingBadgerCanvas.width,openingBadgerCanvas.height);
+  }
+}
+
 const questionAudio = document.getElementById('questionAudio');
 
 function prepareAudio(audio){
@@ -181,11 +263,13 @@ async function startGameForFirstTime(){
   startGameBtn.disabled=true;
   startScreen.classList.add('hidden');
   openingScreen.classList.remove('hidden');
+  startOpeningBadger();
 
   try{
     await playAudioToEnd(openingAudio);
   }catch(err){
     console.error('Erro no áudio de abertura:',err);
+    stopOpeningBadger();
     openingScreen.classList.add('hidden');
     startScreen.classList.remove('hidden');
     startGameBtn.disabled=false;
@@ -197,7 +281,8 @@ async function startGameForFirstTime(){
 
   openingScreen.classList.add('opening-finish');
   await new Promise(resolve=>setTimeout(resolve,500));
-  openingScreen.classList.add('hidden');
+  stopOpeningBadger();
+    openingScreen.classList.add('hidden');
   openingScreen.classList.remove('opening-finish');
   await loadQuestion(1,true,false);
 }

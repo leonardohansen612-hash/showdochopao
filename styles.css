@@ -805,3 +805,8 @@ button{font:inherit}
 @keyframes openingFade{to{opacity:0;transform:scale(1.06)}}
 @keyframes transitionLogo{to{transform:scale(1.055);filter:drop-shadow(0 0 30px #8c58ff)}}
 @keyframes transitionPulse{from{transform:scale(.55);opacity:1}to{transform:scale(1.35);opacity:0}}
+
+/* V12.12 — Texuguinho animado, chroma em canvas sem rastro */
+.opening-badger-stage{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;height:min(86vh,900px);max-width:76vw;animation:hostEntrance 1.2s cubic-bezier(.2,.8,.2,1) both,hostFloat 2s 1.2s ease-in-out infinite alternate}
+.opening-badger-stage .opening-badger{position:relative;z-index:4;height:100%;width:auto;max-width:76vw;object-fit:contain;filter:drop-shadow(0 24px 25px rgba(0,0,0,.55));animation:none}
+.opening-badger-source{position:absolute!important;width:2px!important;height:2px!important;opacity:.001!important;pointer-events:none!important;left:-9999px!important;top:-9999px!important}
