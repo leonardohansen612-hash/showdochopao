@@ -33,3 +33,7 @@ O valor revelado é lido diretamente da carta clicada.
 - Volume e mute normalizados.
 - Mensagem de diagnóstico quando o navegador bloquear ou não carregar o áudio.
 - Cache-busting nos arquivos de áudio.
+
+
+## V12.4 - audio embutido
+Os dois audios MP3 foram incorporados diretamente no index.html como data URLs, eliminando dependencia de servir arquivos .mp3 pelo /assets na Vercel.
